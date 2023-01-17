@@ -1,0 +1,25 @@
+.weather__container {
+  position: absolute;
+  width: 1167px;
+  height: 80px;
+  left: 40px;
+  top: 100px;
+  background: #00a3ff;
+  border-radius: 12px;
+}
+
+.weather__temperature {
+  display: flex;
+  width: 69px;
+  height: 40px;
+  position: absolute;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  color: #fff;
+  margin-top: 20px;
+  margin-left: 16px;
+  margin-bottom: 20px;
+  align-items: center;
+}

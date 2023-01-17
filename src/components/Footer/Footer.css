@@ -1,0 +1,12 @@
+.footer {
+    margin-bottom: 24px;
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    right: 42px;
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+}

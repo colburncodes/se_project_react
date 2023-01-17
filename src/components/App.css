@@ -1,5 +1,12 @@
-.page__section {
-    max-width: 880px;
-    width: 100%;
-    margin: 0 auto;
+.App {
+  min-height: 822px;
+  max-width: 1440px;
+  background: #F3F3F3;
+}
+
+.App__content {
+  /* min-height: 100vh; */
+  max-width: 880px;
+  width: 100%;
+  margin: auto 0;
 }

@@ -1,0 +1,9 @@
+@import url(./components/Header/Header.css);
+@import url(./components/Footer/Footer.css);
+@import url(./components/App.css);
+
+/* .page__section {
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+} */

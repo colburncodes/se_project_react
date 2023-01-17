@@ -2,7 +2,7 @@ import React from "react";
 
 const ItemModal = () => {
   return (
-    <div>
+    <div className="modal">
       <h1>Item Modal</h1>
     </div>
   );
