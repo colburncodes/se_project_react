@@ -1,9 +1,7 @@
-@import url(./components/Header/Header.css);
-@import url(./components/Footer/Footer.css);
+@import url(./vendor/normalize.css);
 @import url(./components/App.css);
+@import url(./fonts/fonts.css);
+@import url(./components/Header/Header.css);
+@import url(./components//WeatherCard/WeatherCard.css);
+@import url(./components/Footer/Footer.css);
 
-/* .page__section {
-    max-width: 880px;
-    width: 100%;
-    margin: 0 auto;
-} */

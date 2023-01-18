@@ -1,18 +1,20 @@
 .weather__container {
-  position: absolute;
+  display: flex;
   width: 1167px;
   height: 80px;
-  left: 40px;
-  top: 100px;
+  /* left: 40px; */
   background: #00a3ff;
   border-radius: 12px;
+  overflow: hidden;
+  margin-top: 100px;
 }
 
 .weather__temperature {
   display: flex;
   width: 69px;
   height: 40px;
-  position: absolute;
+  /* position: absolute; */
+  font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
@@ -22,4 +24,22 @@
   margin-left: 16px;
   margin-bottom: 20px;
   align-items: center;
+}
+
+.weather__sunny {
+  height: 60px;
+  width: 60px;
+  left: 1040px;
+  top: -15px;
+  position: relative;
+  z-index: 0;
+}
+
+.weather__cloud-union {
+  height: 98px;
+  width: 165px;
+  top: 7px;
+  left: 860px;
+  position: relative;
+  z-index: 0;
 }

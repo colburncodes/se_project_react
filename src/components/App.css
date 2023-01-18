@@ -1,12 +1,14 @@
 .App {
-  min-height: 822px;
-  max-width: 1440px;
+  position: relative;
+  height: 822px;
+  width: 100%;
   background: #F3F3F3;
+  margin: auto 0;
 }
 
 .App__content {
-  /* min-height: 100vh; */
   max-width: 880px;
   width: 100%;
-  margin: auto 0;
+  height: 100%;
+  margin: 0 40px 0 40px;
 }
