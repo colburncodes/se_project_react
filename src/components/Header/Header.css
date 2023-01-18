@@ -1,0 +1,77 @@
+.header {
+  display: flex;
+  top: 32px;
+  left: 40px;
+  height: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.header__container {
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+  top: 8px;
+  left: -20px;
+}
+
+.header__logo {
+  width: 89px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  left: -127px;
+  position: relative;
+}
+
+.header__date-location {
+  position: relative;
+  top: 10px;
+  margin: 0 0 0 24px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  left: -121px;
+}
+
+.header__add-clothes {
+  height: 24px;
+  width: 145px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  background: #F3F3F3;
+}
+
+.header__info {
+  display: flex;
+  align-items: flex-end;
+  right: -225px;
+  position: relative;
+}
+
+.header__username {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  position: relative;
+  top: 20px;
+  margin-left: 20px;
+}
+
+.header__avatar {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  background-position: center;
+  margin-left: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
