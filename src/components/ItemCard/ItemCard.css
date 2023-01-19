@@ -4,11 +4,13 @@
   height: 328px;
   background: #E9E9E9;
   border-radius: 19px;
+  margin-left: 20px;
+  margin-bottom: 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .card__title {
-  width: 53px;
+  width: 70px;
   height: 24px;
   margin-left: 142px;
   background-color: #fff;
