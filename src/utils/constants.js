@@ -1,3 +1,3 @@
-export const API_KEY = "80d06484594df58d6d6009fe905ed987";
-export const location = { latitude: "", longitude: "" };
+export const API_KEY = "f30328af8e4a45d347aa92794eb2ae70";
+export const location = { latitude: "35.2271", longitude: "-80.8431" };
 export const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?`;

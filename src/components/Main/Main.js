@@ -3,7 +3,7 @@ import "./Main.css";
 import { ItemCard } from "../ItemCard/ItemCard";
 
 export function Main({ weatherData, cards, onCardClick }) {
-  const temperature = weatherData.temperature;
+  const temperature = weatherData.main?.temp;
 
   const weatherType = () => {
     if (temperature >= 86) {
@@ -21,15 +21,20 @@ export function Main({ weatherData, cards, onCardClick }) {
         <div className="main__info">
           <div className="main__description-container">
             <p className="main__description">
-              Today is {temperature} F and it is {weatherType()} / You may want
-              to wear:
+              Today is {Math.floor(temperature)}F and it is {weatherType()} /
+              You may want to wear:
             </p>
           </div>
         </div>
         <ul className="main__items">
-          {/* {cards.map((card) => (
-            <ItemCard key={card._id} />
-          ))} */}
+          {cards.map((card) => (
+            <ItemCard
+              key={card._id}
+              name={card.name}
+              url={card.link}
+              alt={card.weather}
+            />
+          ))}
         </ul>
       </section>
     </main>

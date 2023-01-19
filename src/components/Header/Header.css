@@ -1,18 +1,22 @@
 .header {
   display: flex;
-  top: 32px;
-  left: 40px;
+  margin-left: 40px;
   height: 40px;
   width: 100%;
-  position: relative;
+  margin-top: 32px;
+  justify-content: space-between;
 }
 
 .header__container {
   display: flex;
   margin: 0 auto;
-  position: relative;
   top: 8px;
-  left: -20px;
+  left: -40px;
+}
+
+.header__info {
+  display: flex;
+  align-items: flex-end;
 }
 
 .header__logo {
@@ -45,15 +49,10 @@
   font-size: 20px;
   line-height: 24px;
   border: none;
-  background: #F3F3F3;
+  background: transparent;
 }
 
-.header__info {
-  display: flex;
-  align-items: flex-end;
-  right: -225px;
-  position: relative;
-}
+
 
 .header__username {
   font-family: 'Cabinet Grotesk', sans-serif;
@@ -74,4 +73,24 @@
   background-position: center;
   margin-left: 12px;
   border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 880px) {
+  .header {
+    top: 16px;
+  }
+
+  .header__logo {
+    
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    top: 16px;
+  }
+
+  .header__logo {
+
+  }
 }
