@@ -4,6 +4,7 @@ import avatarPath from "../../images/avatar.svg";
 import "./Header.css";
 
 export function Header({ weatherData, handleAddClick }) {
+  if (!weatherData) return null;
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -15,7 +16,9 @@ export function Header({ weatherData, handleAddClick }) {
       <header className="header">
         <div className="header__container">
           <img className="header__logo" src={logoPath} alt="What To Wear" />
-          <p className="header__date-location">{currentDate}, St Louis</p>
+          <p className="header__date-location">
+            {currentDate}, {weatherData.name}
+          </p>
         </div>
         <div className="header__info">
           <button
