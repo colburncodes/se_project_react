@@ -1,22 +1,22 @@
 .header {
   display: flex;
-  margin-left: 40px;
   height: 40px;
-  width: 100%;
+  width: 1360px;
   margin-top: 32px;
   justify-content: space-between;
 }
 
 .header__container {
   display: flex;
-  margin: 0 auto;
+  margin: 0;
   top: 8px;
-  left: -40px;
+  margin-left: 130px;
 }
 
 .header__info {
   display: flex;
   align-items: flex-end;
+  margin-right: 190px;
 }
 
 .header__logo {
