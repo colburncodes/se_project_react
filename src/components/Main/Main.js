@@ -27,14 +27,17 @@ export function Main({ weatherData, cards, onCardClick }) {
           </div>
         </div>
         <ul className="main__items">
-          {cards.map((card) => (
-            <ItemCard
-              key={card._id}
-              name={card.name}
-              url={card.link}
-              alt={card.weather}
-            />
-          ))}
+          {cards
+            .filter((card) => card.weather === weatherType())
+            .map((filteredCard) => (
+              <ItemCard
+                key={filteredCard._id}
+                name={filteredCard.name}
+                url={filteredCard.link}
+                alt={filteredCard.weather}
+                onCardClick={onCardClick}
+              />
+            ))}
         </ul>
       </section>
     </main>

@@ -1,5 +1,5 @@
 .footer {
-  margin-bottom: 24px;
+  margin-bottom: 60px;
   position: absolute;
   bottom: 0;
   left: 40px;
@@ -10,7 +10,9 @@
 
 .footer__container {
   display: flex;
-  justify-content: space-between;
+    justify-content: space-between;
+    margin-right: 50px;
+    margin-left: 50px;
 }
 
 .footer__title {
