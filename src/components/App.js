@@ -3,6 +3,7 @@ import "./App.css";
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
 import { Main } from "./Main/Main";
+import { ModalWithForm } from "./ModalWithForm/ModalWithForm";
 import { WeatherCard } from "./WeatherCard/WeatherCard";
 import { defaultClothingItems } from "../utils/clothingitems";
 import { location, BASE_URL, API_KEY } from "../utils/constants";
@@ -32,6 +33,15 @@ function App() {
         />
         <WeatherCard weatherData={weatherData} />
         <Main weatherData={weatherData} cards={defaultClothingItems} />
+        {activeModal ? (
+          <ModalWithForm
+            title="New Garment"
+            buttonText="Add garment"
+            closeModal={setActiveModal}
+          />
+        ) : (
+          ""
+        )}
         <Footer />
       </div>
     </div>
