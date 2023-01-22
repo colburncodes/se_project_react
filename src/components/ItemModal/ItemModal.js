@@ -1,11 +1,23 @@
 import React from "react";
 
-const ItemModal = () => {
+export function ItemModal({ data, onClose }) {
   return (
     <div className="modal">
-      <h1>Item Modal</h1>
+      <div className="modal__container">
+        <button
+          className="modal__close"
+          type="button"
+          onClick={() => onClose(false)}
+        ></button>
+
+        <img className="modal__image" src={data.link} alt="garment" />
+        <div className="modal__label">
+          <p className="modal__title">{data.name}</p>
+          <p className="modal__description">Weather:{data.weather}</p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default ItemModal;
+
