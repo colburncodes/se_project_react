@@ -4,6 +4,7 @@
   width: 100%;
   background: cover #F3F3F3;
   margin: auto 0;
+  background-color: rgba(0, 0, 0, 0.3); 
 }
 
 .App__content {

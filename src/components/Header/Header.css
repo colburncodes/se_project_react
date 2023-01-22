@@ -52,6 +52,10 @@
   background: transparent;
 }
 
+.header__add-clothes:hover {
+  opacity: 06;
+}
+
 
 
 .header__username {

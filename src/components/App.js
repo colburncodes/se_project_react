@@ -3,6 +3,8 @@ import "./App.css";
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
 import { Main } from "./Main/Main";
+// import { ItemModal } from "./ItemModal/ItemModal";
+import { ModalWithForm } from "./ModalWithForm/ModalWithForm";
 import { WeatherCard } from "./WeatherCard/WeatherCard";
 import { defaultClothingItems } from "../utils/clothingitems";
 import { location, BASE_URL, API_KEY } from "../utils/constants";
@@ -13,6 +15,12 @@ const api = new Api({ baseUrl: BASE_URL, apiKey: API_KEY });
 function App() {
   const [weatherData, setWeatherData] = useState({});
   const [activeModal, setActiveModal] = useState();
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  function handleCardClick(card) {
+    setSelectedCard(card);
+    setActiveModal("preview");
+  }
 
   useEffect(() => {
     api
@@ -32,6 +40,16 @@ function App() {
         />
         <WeatherCard weatherData={weatherData} />
         <Main weatherData={weatherData} cards={defaultClothingItems} />
+        {activeModal ? (
+          <ModalWithForm
+            title="New Garment"
+            buttonText="Add garment"
+            closeModal={setActiveModal}
+          />
+        ) : (
+          ""
+        )}
+        {/* {activeModal === "preview" && <ItemModal card={selectedCard} />} */}
         <Footer />
       </div>
     </div>
