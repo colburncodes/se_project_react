@@ -1,20 +1,21 @@
 import React from "react";
+import "./ItemModal.css";
 
-export function ItemModal({ data, onClose }) {
+export function ItemModal({ card, onClose }) {
   return (
-    <div className="modal">
-      <div className="modal__container">
+    <div className="modal__preview">
+      <div className="modal__container-preview">
         <button
-          className="modal__close"
+          className="modal__close-preview"
           type="button"
           onClick={() => onClose(false)}
         ></button>
 
-        <img className="modal__image" src={data.link} alt="garment" />
-        <div className="modal__label">
-          <p className="modal__title">{data.name}</p>
-          <p className="modal__description">Weather:{data.weather}</p>
-        </div>
+        <img className="modal__image-preview" src={card.link} alt="garment" />
+        {/* <div className="modal__label-preview"> */}
+        <p className="modal__title-preview">{card.name}</p>
+        <p className="modal__description">Weather: {card.weather}</p>
+        {/* </div> */}
       </div>
     </div>
   );
