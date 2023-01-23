@@ -1,9 +1,64 @@
-.modal__container {
-  width: 498px;
-  height: 610px;
+.modal__preview {
+  display: flex;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s linear;
+  transform: translate(-50%, -50%);
+}
+/* .modal__container-preview {
+  color: black;
+  border-radius: 4px;
+  margin: 106px 471px 106px 471px;
+} */
+
+.modal__image-preview {
+  width: 422px;
+  height: 465px;
+  border-radius: 16px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
-.modal__image {
-  width: 498px;
-  height: 498px;
+.modal__label-preview {
+  margin-top: 24px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 37px;
+}
+
+.modal__title-preview {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 0px;
+  width: 100px;
+  height: 20px;
+}
+
+.modal__close-preview {
+  display: flex;
+  top: 25px;
+  position: relative;
+  margin-left: 390px;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+  background: transparent
+    url(../../images/modal-close.svg) center
+    no-repeat;
+  transform: rotate(-90deg);
+}
+
+.modal__close-preview:hover {
+  cursor: pointer;
 }

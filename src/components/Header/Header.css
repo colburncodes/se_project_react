@@ -53,7 +53,7 @@
 }
 
 .header__add-clothes:hover {
-  opacity: 06;
+  cursor: pointer;
 }
 
 

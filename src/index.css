@@ -3,5 +3,8 @@
 @import url(./fonts/fonts.css);
 @import url(./components/Header/Header.css);
 @import url(./components//WeatherCard/WeatherCard.css);
+@import url(./components//ModalWithForm//ModalWithForm.css);
+@import url(./components//ItemCard/ItemCard.css);
+@import url(./components/ItemModal/ItemModal.css);
 @import url(./components/Footer/Footer.css);
 
