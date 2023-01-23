@@ -8,10 +8,14 @@ export function ItemModal({ card, onClose }) {
         <button
           className="modal__close-preview"
           type="button"
-          onClick={() => onClose(false)}
+          onClick={() => onClose(null)}
         ></button>
 
-        <img className="modal__image-preview" src={card.link} alt="garment" />
+        <img
+          className="modal__image-preview"
+          src={card.link}
+          alt="Clothing Item"
+        />
         {/* <div className="modal__label-preview"> */}
         <p className="modal__title-preview">{card.name}</p>
         <p className="modal__description">Weather: {card.weather}</p>

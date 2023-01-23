@@ -17,7 +17,7 @@ export function ModalWithForm({
           onClick={() => closeModal(false)}
         ></button>
         <h1 className="modal__title">{title}</h1>
-        <form className={`modal__form modal__form-${name}`} noValidate>
+        <form className={`modal__form modal__form-${name}`}>
           <fieldset className="modal__form-fieldset">
             {children}
             <button

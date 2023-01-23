@@ -5,14 +5,11 @@
   top: 50%;
   visibility: visible;
   opacity: 1;
+  flex-direction: column;
+  /* border: 1px none rgba(0, 0, 0, 0.3); */
   transition: visibility 0s, opacity 0.5s linear;
   transform: translate(-50%, -50%);
 }
-/* .modal__container-preview {
-  color: black;
-  border-radius: 4px;
-  margin: 106px 471px 106px 471px;
-} */
 
 .modal__image-preview {
   width: 422px;

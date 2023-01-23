@@ -15,12 +15,16 @@ const api = new Api({ baseUrl: BASE_URL, apiKey: API_KEY });
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
-  const [activeModal, setActiveModal] = useState();
+  const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
     setActiveModal("preview");
+  };
+
+  const closeAllPopups = () => {
+    setActiveModal(null);
   };
 
   useEffect(() => {
@@ -52,13 +56,13 @@ function App() {
           title="New Garment"
           name="create"
           buttonText="Add garment"
-          closeModal={setActiveModal}
+          closeModal={closeAllPopups}
         >
           <GarmentModal />
         </ModalWithForm>
       )}
       {activeModal === "preview" && (
-        <ItemModal card={selectedCard} onClose={setActiveModal} />
+        <ItemModal card={selectedCard} onClose={closeAllPopups} />
       )}
     </div>
   );
