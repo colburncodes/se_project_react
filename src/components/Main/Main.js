@@ -1,10 +1,8 @@
 import React from "react";
 import "./Main.css";
 import { ItemCard } from "../ItemCard/ItemCard";
-
 export function Main({ weatherData, cards, onCardClick }) {
   const temperature = weatherData.main?.temp;
-
   const weatherType = () => {
     if (temperature >= 86) {
       return "hot";
@@ -14,7 +12,6 @@ export function Main({ weatherData, cards, onCardClick }) {
       return "cold";
     }
   };
-
   return (
     <main className="main">
       <section className="main__clothes">
@@ -32,9 +29,7 @@ export function Main({ weatherData, cards, onCardClick }) {
             .map((filteredCard) => (
               <ItemCard
                 key={filteredCard._id}
-                name={filteredCard.name}
-                url={filteredCard.link}
-                alt={filteredCard.weather}
+                card={filteredCard}
                 onCardClick={onCardClick}
               />
             ))}

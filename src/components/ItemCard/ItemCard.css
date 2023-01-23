@@ -27,6 +27,7 @@
   align-items: center;
   display: flex;
   border-radius: 4px;
+  color: #000;
 }
 
 .card__image {
