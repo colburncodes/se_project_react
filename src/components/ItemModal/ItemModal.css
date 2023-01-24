@@ -1,14 +1,19 @@
 .modal__preview {
   display: flex;
   position: fixed;
-  left: 50%;
-  top: 50%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   visibility: visible;
   opacity: 1;
   flex-direction: column;
-  /* border: 1px none rgba(0, 0, 0, 0.3); */
+  background: rgba(0, 0, 0, 0.3);
   transition: visibility 0s, opacity 0.5s linear;
-  transform: translate(-50%, -50%);
+}
+
+.modal__container-preview {
+  margin: 177px 505px;
 }
 
 .modal__image-preview {
@@ -41,7 +46,7 @@
 
 .modal__close-preview {
   display: flex;
-  top: 25px;
+  top: 31px;
   position: relative;
   margin-left: 390px;
   width: 16px;

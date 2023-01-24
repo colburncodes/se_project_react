@@ -5,17 +5,17 @@ import { Footer } from "./Footer/Footer";
 import { Main } from "./Main/Main";
 import { ItemModal } from "./ItemModal/ItemModal";
 import { ModalWithForm } from "./ModalWithForm/ModalWithForm";
+import { GarmentFormModal } from "./Forms/GarmentFormModal";
 import { WeatherCard } from "./WeatherCard/WeatherCard";
-import { defaultClothingItems } from "../utils/clothingitems";
 import { location, BASE_URL, API_KEY } from "../utils/constants";
+import { defaultClothingItems } from "../utils/clothingitems";
 import Api from "../utils/weatherApi";
-import { GarmentModal } from "./Forms/GarmentModal";
 
 const api = new Api({ baseUrl: BASE_URL, apiKey: API_KEY });
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
-  const [activeModal, setActiveModal] = useState("");
+  const [activeModal, setActiveModal] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
 
   const handleCardClick = (card) => {
@@ -58,7 +58,7 @@ function App() {
           buttonText="Add garment"
           closeModal={closeAllPopups}
         >
-          <GarmentModal />
+          <GarmentFormModal />
         </ModalWithForm>
       )}
       {activeModal === "preview" && (
