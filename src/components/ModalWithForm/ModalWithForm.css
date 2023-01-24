@@ -18,7 +18,7 @@
   color: black;
   background-color: #fff;
   border-radius: 4px;
-  margin: 190px 197px 0px 382px;
+  margin: 190px 418px 0px 382px;
   position: relative;
 }
 
@@ -37,7 +37,6 @@
 }
 
 .modal__form {
-  /* margin: 0; */
   margin: 0px 28px 28px 0px;
   padding: 0;
   display: flex;
