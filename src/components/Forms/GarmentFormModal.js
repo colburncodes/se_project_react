@@ -1,6 +1,6 @@
 import React from "react";
 
-export function GarmentModal() {
+export function GarmentFormModal() {
   return (
     <>
       <label className="modal__label">Name</label>

@@ -1,29 +1,24 @@
 .modal {
   display: flex;
   position: fixed;
-  top: 200px;
-
-  /* background-color: rgba(0, 0, 0, 0.5); */
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
   justify-content: center;
-  /* opacity: 0; */
+  opacity: 1;
   box-sizing: border-box;
-  transition: visibility 0s 0.5s, opacity 0.5s linear;
-  /* justify-content: center;
-  opacity: 0;
-  box-sizing: border-box;
-  font-family: 'Cabinet Grotesk', sans-serif;
-  
-  transition: visibility 0s 0.5s, opacity 0.5s linear; */
+  transition: visibility 0s 0.7s, opacity 0.7s linear;
 }
 
 .modal__container {
   width: 496px;
   height: 436px;
   color: black;
-  margin: 0 auto;
   background-color: #fff;
   border-radius: 4px;
-  margin: 0px 468px 0px 382px;
+  margin: 190px 418px 0px 382px;
   position: relative;
 }
 
@@ -42,7 +37,6 @@
 }
 
 .modal__form {
-  /* margin: 0; */
   margin: 0px 28px 28px 0px;
   padding: 0;
   display: flex;
