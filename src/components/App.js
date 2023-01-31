@@ -7,11 +7,10 @@ import { ItemModal } from "./ItemModal/ItemModal";
 import { ModalWithForm } from "./ModalWithForm/ModalWithForm";
 import { GarmentFormModal } from "./Forms/GarmentFormModal";
 import { WeatherCard } from "./WeatherCard/WeatherCard";
-import { location, BASE_URL, API_KEY } from "../utils/constants";
+import { location, API_KEY } from "../utils/constants";
 import { defaultClothingItems } from "../utils/clothingitems";
-import Api from "../utils/weatherApi";
+import { api } from "../utils/weatherApi";
 
-const api = new Api({ baseUrl: BASE_URL, apiKey: API_KEY });
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
