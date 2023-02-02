@@ -1,7 +1,14 @@
 import React from "react";
-import "./Main.css";
 import { ItemCard } from "../ItemCard/ItemCard";
+import { WeatherCard } from "../WeatherCard/WeatherCard";
+import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
+import "./Main.css";
+
 export function Main({ weatherData, cards, onCardClick }) {
+  const { currentTemperatureUnit } = React.useContext(
+    CurrentTemperatureUnitContext
+  );
+
   const temperature = weatherData.main?.temp;
   const weatherType = () => {
     if (temperature >= 86) {
@@ -17,9 +24,10 @@ export function Main({ weatherData, cards, onCardClick }) {
       <section className="main__clothes">
         <div className="main__info">
           <div className="main__description-container">
+            <WeatherCard weatherData={weatherData} />
             <p className="main__description">
-              Today is {Math.floor(temperature)}F and it is {weatherType()} /
-              You may want to wear:
+              Today is {Math.round(temperature)}°{currentTemperatureUnit} and it
+              is {weatherType()} / You may want to wear:
             </p>
           </div>
         </div>

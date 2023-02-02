@@ -1,25 +1,32 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
 import { Main } from "./Main/Main";
 import { ItemModal } from "./ItemModal/ItemModal";
 import { ModalWithForm } from "./ModalWithForm/ModalWithForm";
-import { GarmentFormModal } from "./Forms/GarmentFormModal";
-import { WeatherCard } from "./WeatherCard/WeatherCard";
+import { AddGarmentModal } from "./Forms/AddGarmentModal";
+import { api } from "../utils/weatherApi";
+import { mockApi } from "../utils/restApi";
 import { location, API_KEY } from "../utils/constants";
 import { defaultClothingItems } from "../utils/clothingitems";
-import { api } from "../utils/weatherApi";
-
+import { CurrentTemperatureUnitContext } from "../context/CurrentTemperatureUnitContext";
+import "./App.css";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
   const [activeModal, setActiveModal] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
     setActiveModal("preview");
+  };
+
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
   };
 
   const closeAllPopups = () => {
@@ -35,20 +42,32 @@ function App() {
       .catch((err) => console.error(err));
   }, []);
 
+  useEffect(() => {
+    mockApi
+      .getItems()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <div className="App">
       <div className="App__content">
-        <Header
-          weatherData={weatherData}
-          handleAddClick={() => setActiveModal("create")}
-        />
-        <WeatherCard weatherData={weatherData} />
-        <Main
-          weatherData={weatherData}
-          cards={defaultClothingItems}
-          onCardClick={handleCardClick}
-        />
-        <Footer />
+        <CurrentTemperatureUnitContext.Provider
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        >
+          <Header
+            weatherData={weatherData}
+            handleAddClick={() => setActiveModal("create")}
+          />
+          <Main
+            weatherData={weatherData}
+            cards={defaultClothingItems}
+            onCardClick={handleCardClick}
+          />
+          <Footer />
+        </CurrentTemperatureUnitContext.Provider>
       </div>
       {activeModal === "create" && (
         <ModalWithForm
@@ -57,7 +76,7 @@ function App() {
           buttonText="Add garment"
           closeModal={closeAllPopups}
         >
-          <GarmentFormModal />
+          <AddGarmentModal />
         </ModalWithForm>
       )}
       {activeModal === "preview" && (

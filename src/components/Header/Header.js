@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import logoPath from "../../images/wtwr.svg";
 import avatarPath from "../../images/avatar.svg";
 import { currentDate } from "../../utils/constants";
+import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 
-export function Header({ weatherData, handleAddClick }) {
+export function Header({ isOn, weatherData, handleAddClick }) {
+  const [value, setValue] = useState(false);
   if (!weatherData) return null;
 
   const userName = "Terrance Tegegne";
@@ -18,6 +20,7 @@ export function Header({ weatherData, handleAddClick }) {
         </p>
       </div>
       <div className="header__info">
+        <ToggleSwitch isOn={value} handleToggle={() => setValue(!value)} />
         <button
           className="header__add-clothes"
           type="button"
