@@ -14,7 +14,7 @@ export function ItemModal({ card, onClose }) {
         <div className="modal__label-preview">
           <img
             className="modal__image-preview"
-            src={card.link}
+            src={card.imageUrl}
             alt="Clothing Item"
           />
           <p className="modal__title-preview">{card.name}</p>

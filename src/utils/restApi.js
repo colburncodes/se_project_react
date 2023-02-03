@@ -13,6 +13,28 @@ class MockApi {
     const response = await fetch(`${this._baseUrl}/items`);
     return this._handleResponse(response);
   };
+
+  adddNewItem = async ({ name, imageUrl, weather }) => {
+    const response = await fetch(`${this._baseUrl}/items`, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        imageUrl,
+        weather,
+      }),
+    });
+    return this._handleResponse(response);
+  };
+
+  deleteItem = async (id) => {
+    const response = await fetch(`${this._baseUrl}/items/${id}`, {
+      method: "DELETE",
+      body: JSON.stringify({
+        id,
+      }),
+    });
+    return this._handleResponse(response);
+  };
 }
 
 export default MockApi;
