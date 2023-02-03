@@ -8,7 +8,6 @@ import { AddGarmentModal } from "./Forms/AddGarmentModal";
 import { api } from "../utils/weatherApi";
 import { mockApi } from "../utils/restApi";
 import { location, API_KEY } from "../utils/constants";
-import { defaultClothingItems } from "../utils/clothingitems";
 import { CurrentTemperatureUnitContext } from "../context/CurrentTemperatureUnitContext";
 import "./App.css";
 
@@ -16,6 +15,7 @@ function App() {
   const [weatherData, setWeatherData] = useState({});
   const [activeModal, setActiveModal] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [clothingitems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleCardClick = (card) => {
@@ -46,7 +46,7 @@ function App() {
     mockApi
       .getItems()
       .then((data) => {
-        console.log(data);
+        setClothingItems(data);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -63,7 +63,7 @@ function App() {
           />
           <Main
             weatherData={weatherData}
-            cards={defaultClothingItems}
+            cards={clothingitems}
             onCardClick={handleCardClick}
           />
           <Footer />

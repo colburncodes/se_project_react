@@ -7,8 +7,7 @@ export function ItemCard({ card, onCardClick }) {
         <div className="card__title-background">
           <h2 className="card__title">{card.name}</h2>
         </div>
-        {/* <img src="./images/heart.svg" alt="Heart Icon" /> */}
-        <img className="card__image" src={card.link} alt={card.name} />
+        <img className="card__image" src={card.imageUrl} alt={card.name} />
       </div>
     </div>
   );
