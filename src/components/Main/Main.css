@@ -8,8 +8,8 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-  margin-top: 34px;
-  gap: 40px;
+  margin-top: 24px;
+  gap: 10px;
 }
 
 .main__description {
@@ -20,4 +20,29 @@
   line-height: 25px;
   margin-top: 40px;
   margin-left: 30px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .main {
+    display: flex;
+    width: 1360px;
+    height: 387px;
+  }
+
+}
+
+@media only screen and (max-width: 880px) {
+  .main {
+    display: flex;
+    width: 1360px;
+    height: 387px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .main {
+    display: flex;
+    width: 1360px;
+    height: 387px;
+  }
 }

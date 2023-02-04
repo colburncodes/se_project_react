@@ -42,3 +42,22 @@
   position: relative;
   z-index: 0;
 }
+
+@media only screen and (max-width: 1024px) {
+  .weather__container {
+    box-sizing: border-box;
+  }
+
+}
+
+@media only screen and (max-width: 880px) {
+  .weather__container {
+    box-sizing: border-box;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .weather__container {
+    box-sizing: border-box;
+  }
+}

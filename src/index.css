@@ -8,3 +8,6 @@
 @import url(./components/ItemModal/ItemModal.css);
 @import url(./components/Footer/Footer.css);
 
+* {
+box-sizing: border-box;
+}

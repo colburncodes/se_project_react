@@ -3,30 +3,33 @@ import "./ToggleSwitch.css";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 
 export function ToggleSwitch() {
-  const { currentTemperature, handleToggleSwitchChange } = React.useContext(
+  const { currentTemperatureUnit, handleToggleSwitchChange } = React.useContext(
     CurrentTemperatureUnitContext
   );
 
-  const [isChecked, setIsChecked] = useState(currentTemperature === "C");
+  const [isChecked, setIsChecked] = useState(currentTemperatureUnit === "C");
 
   useEffect(() => {
-    setIsChecked(currentTemperature === "C");
-  }, [currentTemperature]);
+    setIsChecked(currentTemperatureUnit === "C");
+  }, [currentTemperatureUnit]);
 
   return (
     <>
-      <input
-        className="weather__toggle-checkbox"
-        type="checkbox"
-        checked={isChecked}
-        onChange={handleToggleSwitchChange}
-        value={currentTemperature}
-      />
-      <label
-        className="weather__toggle-label"
-        htmlFor={`weather__toggle-new`}
-      />
-      <span className="weather__toggle-button" />
+      <div className="toggle__switch">
+        <p className="toggle__switch-unit-fahrenheit">
+          {currentTemperatureUnit}
+        </p>
+        <p className="toggle__switch-unit-celsius">C</p>
+        <input
+          className="toggle__switch-checkbox"
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleToggleSwitchChange}
+          value={currentTemperatureUnit}
+        />
+        <label className="toggle__switch-label" htmlFor={`toggle__switch`} />
+        <span className="toggle__switch-button" />
+      </div>
     </>
   );
 }

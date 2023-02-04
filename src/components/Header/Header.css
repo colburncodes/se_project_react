@@ -79,22 +79,37 @@
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-@media screen and (max-width: 880px) {
+@media only screen and (min-width: 1024px) {
   .header {
     top: 16px;
+    box-sizing: border-box;
   }
 
   .header__logo {
-    
+    box-sizing: border-box;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media only screen and (min-width: 880px) {
   .header {
     top: 16px;
+    box-sizing: border-box;
   }
 
   .header__logo {
+    display: flex;
+    box-sizing: border-box;
+  }
+}
 
+@media only screen and (min-width: 480px) {
+  .header {
+    top: 16px;
+    display: flex;
+    box-sizing: border-box;
+  }
+
+  .header__logo {
+    box-sizing: border-box;
   }
 }

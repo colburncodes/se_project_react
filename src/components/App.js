@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
 import { Main } from "./Main/Main";
+import { Profile } from "./Profile/Profile";
 import { ItemModal } from "./ItemModal/ItemModal";
 import { ModalWithForm } from "./ModalWithForm/ModalWithForm";
 import { AddGarmentModal } from "./Forms/AddGarmentModal";
@@ -61,11 +63,18 @@ function App() {
             weatherData={weatherData}
             handleAddClick={() => setActiveModal("create")}
           />
-          <Main
-            weatherData={weatherData}
-            cards={clothingitems}
-            onCardClick={handleCardClick}
-          />
+          <Switch>
+            <Route exact path="/">
+              <Main
+                weatherData={weatherData}
+                cards={clothingitems}
+                onCardClick={handleCardClick}
+              />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+          </Switch>
           <Footer />
         </CurrentTemperatureUnitContext.Provider>
       </div>
