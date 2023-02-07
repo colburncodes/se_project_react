@@ -10,13 +10,20 @@ class MockApi {
   }
 
   getItems = async () => {
-    const response = await fetch(`${this._baseUrl}/items`);
+    const response = await fetch(`${this._baseUrl}/items`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return this._handleResponse(response);
   };
 
   adddNewItem = async ({ name, imageUrl, weather }) => {
     const response = await fetch(`${this._baseUrl}/items`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name,
         imageUrl,
@@ -29,6 +36,9 @@ class MockApi {
   deleteItem = async (id) => {
     const response = await fetch(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         id,
       }),

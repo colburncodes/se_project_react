@@ -55,10 +55,10 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App__content">
-        <CurrentTemperatureUnitContext.Provider
-          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-        >
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <div className="App__content">
           <Header
             weatherData={weatherData}
             handleAddClick={() => setActiveModal("create")}
@@ -72,25 +72,25 @@ function App() {
               />
             </Route>
             <Route path="/profile">
-              <Profile />
+              <Profile clothes={clothingitems} />
             </Route>
           </Switch>
           <Footer />
-        </CurrentTemperatureUnitContext.Provider>
-      </div>
-      {activeModal === "create" && (
-        <ModalWithForm
-          title="New Garment"
-          name="create"
-          buttonText="Add garment"
-          closeModal={closeAllPopups}
-        >
-          <AddGarmentModal />
-        </ModalWithForm>
-      )}
-      {activeModal === "preview" && (
-        <ItemModal card={selectedCard} onClose={closeAllPopups} />
-      )}
+        </div>
+        {activeModal === "create" && (
+          <ModalWithForm
+            title="New Garment"
+            name="create"
+            buttonText="Add garment"
+            closeModal={closeAllPopups}
+          >
+            <AddGarmentModal />
+          </ModalWithForm>
+        )}
+        {activeModal === "preview" && (
+          <ItemModal card={selectedCard} onClose={closeAllPopups} />
+        )}
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }
