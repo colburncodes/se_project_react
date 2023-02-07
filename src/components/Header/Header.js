@@ -31,7 +31,9 @@ export function Header({ weatherData, handleAddClick }) {
           + Add clothes
         </button>
         <p className="header__username">{userName}</p>
-        <img className="header__avatar" alt="Avatar" src={avatarPath} />
+        <Link to={"/profile"}>
+          <img className="header__avatar" alt="Avatar" src={avatarPath} />
+        </Link>
       </div>
     </header>
   );
