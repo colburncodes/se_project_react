@@ -5,7 +5,7 @@ import "./Profile.css";
 
 export function Profile({ clothes }) {
   return (
-    <div>
+    <div className="profile">
       <SideBar />
       <ClothesSection cards={clothes} />
     </div>

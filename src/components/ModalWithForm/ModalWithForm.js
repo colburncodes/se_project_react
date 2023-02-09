@@ -7,6 +7,7 @@ export function ModalWithForm({
   buttonText,
   children,
   closeModal,
+  onSubmit,
 }) {
   return (
     <div className="modal">
@@ -21,6 +22,7 @@ export function ModalWithForm({
           <fieldset className="modal__form-fieldset">
             {children}
             <button
+              onSubmit={onSubmit}
               className="modal__save-button modal__button-disabled"
               type="submit"
             >
