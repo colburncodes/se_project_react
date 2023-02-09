@@ -1,20 +1,16 @@
 .clothes__section {
- display: flex;
+  display: flex;
 }
 .clothes__section-info {
   display: flex;
-  /* flex-direction: row; */
 }
+
 .clothes__section-container {
   display: flex;
-  margin: 0;
-  margin-left: 245px;
+  margin-top: 106px;
 }
 
 .clothes__section-items {
   display: flex;
   flex-wrap: wrap;
-  margin: 0;
-  margin-top: 24px;
-  gap: 2px;
 }

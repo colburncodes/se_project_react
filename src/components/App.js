@@ -5,12 +5,11 @@ import { Footer } from "./Footer/Footer";
 import { Main } from "./Main/Main";
 import { Profile } from "./Profile/Profile";
 import { ItemModal } from "./ItemModal/ItemModal";
-import { ModalWithForm } from "./ModalWithForm/ModalWithForm";
-import { AddGarmentModal } from "./Forms/AddGarmentModal";
 import { api } from "../utils/weatherApi";
 import { mockApi } from "../utils/restApi";
 import { location, API_KEY } from "../utils/constants";
 import { CurrentTemperatureUnitContext } from "../context/CurrentTemperatureUnitContext";
+import { AddItemModal } from "./AddItemModal/AddItemModal";
 import "./App.css";
 
 function App() {
@@ -31,7 +30,7 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  const closeAllPopups = () => {
+  const closeModal = () => {
     setActiveModal(null);
   };
 
@@ -52,6 +51,17 @@ function App() {
       })
       .catch((error) => console.error(error));
   }, []);
+
+  function handleAddItemSubmit(name, imageUrl, weather) {
+    mockApi
+      .adddNewItem(name, imageUrl, weather)
+      .then((item) => {
+        console.log(item);
+        setClothingItems([item, ...clothingitems]);
+        closeModal();
+      })
+      .catch((error) => console.error(error));
+  }
 
   return (
     <div className="App">
@@ -78,17 +88,16 @@ function App() {
           <Footer />
         </div>
         {activeModal === "create" && (
-          <ModalWithForm
-            title="New Garment"
-            name="create"
-            buttonText="Add garment"
-            closeModal={closeAllPopups}
-          >
-            <AddGarmentModal />
-          </ModalWithForm>
+          <AddItemModal
+            type={"create"}
+            isOpen={activeModal === "create"}
+            onCloseModal={closeModal}
+            onAddItem={handleAddItemSubmit}
+          />
         )}
+
         {activeModal === "preview" && (
-          <ItemModal card={selectedCard} onClose={closeAllPopups} />
+          <ItemModal card={selectedCard} onClose={closeModal} />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
