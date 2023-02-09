@@ -54,13 +54,21 @@ function App() {
 
   function handleAddItemSubmit(name, imageUrl, weather) {
     mockApi
-      .adddNewItem(name, imageUrl, weather)
+      .addNewItem({ name, imageUrl, weather })
       .then((item) => {
-        console.log(item);
         setClothingItems([item, ...clothingitems]);
         closeModal();
       })
       .catch((error) => console.error(error));
+  }
+
+  function handleDeleteItemSubmit() {
+    mockApi.deleteItem(selectedCard.id).then(() => {
+      setClothingItems([
+        ...clothingitems.filter((item) => item.id !== selectedCard.id),
+      ]);
+      closeModal();
+    });
   }
 
   return (
@@ -97,7 +105,11 @@ function App() {
         )}
 
         {activeModal === "preview" && (
-          <ItemModal card={selectedCard} onClose={closeModal} />
+          <ItemModal
+            card={selectedCard}
+            onClose={closeModal}
+            onDelete={handleDeleteItemSubmit}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
