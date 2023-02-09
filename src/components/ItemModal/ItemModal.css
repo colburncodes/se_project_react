@@ -72,12 +72,29 @@
   justify-content: center;
   border: 0;
   cursor: pointer;
-  background: transparent
-    url(../../images/modal-close.svg) center
-    no-repeat;
+  background: transparent url(../../images/modal-close.svg) center no-repeat;
   transform: rotate(-90deg);
 }
 
 .modal__close-preview:hover {
   cursor: pointer;
+}
+
+.modal__delete-item {
+  display: flex;
+  position: relative;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 24px;
+  width: 100px;
+  height: 24px;
+  border: none;
+  background-color: #fff;
+  color: #ff4d00;
+  cursor: pointer;
+  top: -76px;
+  left: 303px;
+  margin: 0;
+  text-align: end;
 }

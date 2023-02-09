@@ -18,7 +18,7 @@ class MockApi {
     return this._handleResponse(response);
   };
 
-  adddNewItem = async ({ name, imageUrl, weather }) => {
+  addNewItem = async ({ name, imageUrl, weather }) => {
     const response = await fetch(`${this._baseUrl}/items`, {
       method: "POST",
       headers: {
