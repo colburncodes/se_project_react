@@ -63,12 +63,15 @@ function App() {
   }
 
   function handleDeleteItemSubmit() {
-    mockApi.deleteItem(selectedCard.id).then(() => {
-      setClothingItems([
-        ...clothingitems.filter((item) => item.id !== selectedCard.id),
-      ]);
-      closeModal();
-    });
+    mockApi
+      .deleteItem(selectedCard.id)
+      .then(() => {
+        setClothingItems([
+          ...clothingitems.filter((item) => item.id !== selectedCard.id),
+        ]);
+        closeModal();
+      })
+      .catch((error) => console.error(error));
   }
 
   return (
