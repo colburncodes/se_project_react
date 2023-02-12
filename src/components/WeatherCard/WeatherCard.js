@@ -8,12 +8,19 @@ export function WeatherCard({ weatherData }) {
   const { currentTemperatureUnit } = React.useContext(
     CurrentTemperatureUnitContext
   );
-  const temperature = weatherData.main?.temp;
+  let temperature = weatherData.main?.temp;
+
   return (
     <div className="weather__container">
-      <p className="weather__temperature">
-        {Math.round(temperature)}°{currentTemperatureUnit}
-      </p>
+      {currentTemperatureUnit === "F" ? (
+        <p className="weather__temperature">
+          {Math.round(temperature)}°{currentTemperatureUnit}
+        </p>
+      ) : (
+        <p className="weather__temperature">
+          {Math.round(((temperature - 32) * 5) / 9)}°{currentTemperatureUnit}
+        </p>
+      )}
       <img className="weather__sunny" src={sunPath} alt="sun" />
       <img className="weather__cloud-union" src={cloudPath} alt="clouds" />
     </div>
