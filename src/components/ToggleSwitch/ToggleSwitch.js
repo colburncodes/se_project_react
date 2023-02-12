@@ -17,7 +17,7 @@ export function ToggleSwitch() {
           value={currentTemperatureUnit}
           onClick={handleToggleSwitchChange}
         />
-        <span className="toggleswitch__slider"></span>C
+        <span className="toggleswitch__slider"></span>
       </label>
     </div>
   );

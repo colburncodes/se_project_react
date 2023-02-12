@@ -3,6 +3,10 @@ class MockApi {
     this._baseUrl = baseUrl;
   }
 
+  _request(url, options) {
+    return fetch(url, options).then(this._handleResponse);
+  }
+
   _handleResponse(response) {
     return response.ok
       ? response.json()
@@ -50,5 +54,5 @@ class MockApi {
 export default MockApi;
 
 export const mockApi = new MockApi({
-  baseUrl: "http://localhost:3001",
+  baseUrl: "https://my-json-server.typicode.com/colburncodes/se_project_react",
 });
