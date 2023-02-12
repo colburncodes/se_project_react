@@ -24,15 +24,12 @@ function App() {
     setActiveModal("preview");
   };
 
-  const handleToggleSwitchChange = () => {
+  const handleToggleSwitchChange = () =>
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
-  };
 
-  const closeModal = () => {
-    setActiveModal("");
-  };
+  const closeModal = () => setActiveModal("");
 
   useEffect(() => {
     api
@@ -69,6 +66,7 @@ function App() {
         setClothingItems([
           ...clothingitems.filter((item) => item.id !== selectedCard.id),
         ]);
+        setSelectedCard({});
         closeModal();
       })
       .catch((error) => console.error(error));

@@ -1,86 +1,103 @@
-.toggle__switch-checkbox {
-  height: 0;
-  width: 0;
-  visibility: hidden;
-}
-
-.toggle__switch-label {
+.toggleswitch__container {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
+  justify-content: space-evenly;
   width: 56px;
   height: 28px;
-  background: #fff;
-  border: 2px solid #7e7e7e;
-  border-radius: 100px;
-  position: relative;
-  transition: background-color 0.2s;
-}
-
-.toggle__switch-unit-fahrenheit {
-  display: flex;
-  position: absolute;
-  font-family: 'Cabinet Grotesk', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
-  background: #000;
-  color: #fff;
-  width: 26px;
-  height: 26px;
+  margin: 38px 20px 0 0;
+  background-color: #fff;
   border-radius: 20px;
-  align-items: center;
-  justify-content: center;
-  top: 28px;
-  margin-top: 17px;
-  margin-left: 1px;
-  z-index: 5;
+  border: 2px solid #7e7e7e;
   cursor: pointer;
 }
 
-.toggle__switch-unit-celsius {
-  display: flex;
-  position: absolute;
-  font-family: 'Cabinet Grotesk', sans-serif;
-  font-style: normal;
-  font-weight: 700;
+.toggleswitch {
+  font-family: "CabinetGrotesk-Variable";
   font-size: 14px;
-  line-height: 20px;
-  color: rgba(134, 132, 132, 0.5);
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.toggleswitch__input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleswitch__f {
+  font-family: "CabinetGrotesk-Variable";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.toggleswitch__c {
+  font-family: "CabinetGrotesk-Variable";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.toggleswitch__slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  border-radius: 20px;
   width: 28px;
   height: 28px;
-  border-radius: 20px;
-  align-items: center;
+  transition: 0.4s;
+}
+
+.toggleswitch__slider:before {
+  display: flex;
   justify-content: center;
-  top: 28px;
-  margin-top: 15px;
-  margin-left: 29px;
-  z-index: 5;
-  cursor: pointer;
-}
-
-.toggle__switch-label .toggle__switch-button {
-  content: "";
+  align-items: center;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 45px;
-  height: 45px;
-  border-radius: 45px;
-  transition: 0.2s;
-  background: #fff;
-  box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+  content: "";
+  width: 28px;
+  height: 28px;
+  left: 0;
+  bottom: 0;
+  color: white;
+  margin: auto;
+  background-color: #000;
+  transition: 0.4s;
+  border-radius: 20px;
 }
 
-.toggle__switch-label:checked
-  + .toggle__switch-label
-  .toggle__switch-button {
-  left: calc(100% - 2px);
-  transform: translateX(-100%);
+.toggleswitch__container:hover {
+  transition: ease-in 0.2s;
+  border-color: #000;
 }
 
-.toggle__switch-label:active .toggle__switch-button {
-  width: 60px;
+.toggleswitch:hover {
+  color: #000;
+}
+
+.toggleswitch__input:checked + .toggleswitch {
+  color: white;
+}
+
+.toggleswitch__input:checked + .toggleswitch__slider:before {
+  content: "C";
+  transform: translateX(29px);
+}
+
+.toggleswitch__input + .toggleswitch__slider:before {
+  content: "F";
 }
