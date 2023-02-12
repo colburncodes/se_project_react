@@ -35,6 +35,7 @@ export const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
       name="create"
       buttonText="Add garment"
       isOpen={isOpen}
+      onAddItem={onAddItem}
       onSubmit={handleSubmit}
       closeModal={onCloseModal}
     >

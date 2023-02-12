@@ -14,7 +14,7 @@ import "./App.css";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
-  const [activeModal, setActiveModal] = useState(null);
+  const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -31,7 +31,7 @@ function App() {
   };
 
   const closeModal = () => {
-    setActiveModal(null);
+    setActiveModal("");
   };
 
   useEffect(() => {
@@ -106,9 +106,9 @@ function App() {
             onAddItem={handleAddItemSubmit}
           />
         )}
-
         {activeModal === "preview" && (
           <ItemModal
+            isOpen={activeModal === "preview"}
             card={selectedCard}
             onClose={closeModal}
             onDelete={handleDeleteItemSubmit}
