@@ -1,7 +1,7 @@
 import React from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
-export function ClothesSection({ cards, handleAddClick }) {
+export function ClothesSection({ cards, onCardClick }) {
   return (
     <div className="clothes__section">
       <div className="clothes__section-info">
@@ -17,7 +17,7 @@ export function ClothesSection({ cards, handleAddClick }) {
       <div className="clothes__section-container">
         <ul className="clothes__section-items">
           {cards.map((card) => (
-            <ItemCard key={card.id} card={card} />
+            <ItemCard key={card.id} card={card} onCardClick={onCardClick} />
           ))}
         </ul>
       </div>
