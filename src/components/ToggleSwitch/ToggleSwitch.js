@@ -10,7 +10,8 @@ export function ToggleSwitch() {
   return (
     <div className="toggleswitch__container">
       <label className="toggleswitch">
-        {""}
+        <p className="toggleswitch__f">F</p>
+        <p className="toggleswitch__c">C</p>
         <input
           className="toggleswitch__input"
           type="checkbox"

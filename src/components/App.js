@@ -99,7 +99,7 @@ function App() {
               />
             </Route>
             <Route path="/profile">
-              <Profile clothes={clothingitems} />
+              <Profile clothes={clothingitems} onCardClick={handleCardClick} />
             </Route>
           </Switch>
           <Footer />

@@ -13,7 +13,7 @@
 }
 
 .toggleswitch {
-  font-family: "CabinetGrotesk-Variable";
+  font-family: "Cabinet Grotesk", sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 17px;
@@ -29,23 +29,27 @@
 }
 
 .toggleswitch__f {
-  font-family: "CabinetGrotesk-Variable";
+  font-family: "Cabinet Grotesk", sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 17px;
   letter-spacing: 0em;
   text-align: center;
+  margin-top: 33px;
+  margin-right: 28px;
   color: rgba(0, 0, 0, 0.5);
   z-index: 3;
 }
 
 .toggleswitch__c {
-  font-family: "CabinetGrotesk-Variable";
+  font-family: "Cabinet Grotesk", sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 17px;
   letter-spacing: 0em;
   text-align: center;
+  margin-left: 31px;
+  margin-top: -29px;
   color: rgba(0, 0, 0, 0.5);
   z-index: 3;
 }
