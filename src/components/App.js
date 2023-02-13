@@ -31,30 +31,15 @@ function App() {
 
   const closeModal = () => setActiveModal("");
 
-  const fetchWeatherData = async () => {
-    await api
-      .getWeatherData(location, API_KEY)
-      .then((data) => {
-        setWeatherData(data);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  const fetchClothingItems = async () => {
-    await mockApi
-      .getItems()
-      .then((data) => {
-        setClothingItems(data);
-      })
-      .catch((error) => console.error(error));
-  };
-
   useEffect(() => {
     // Parallel execution to allow multiple async operations.
     // Simplifying error handling easier to maintain
-    Promise.all([fetchWeatherData(), fetchClothingItems()]).catch((error) =>
-      console.error(error)
-    );
+    Promise.all([api.getWeatherData(location, API_KEY), mockApi.getItems()])
+      .then(([weatherInfo, clothing]) => {
+        setWeatherData(weatherInfo);
+        setClothingItems(clothing);
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   function handleAddItemSubmit(name, imageUrl, weather) {
