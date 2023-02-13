@@ -44,7 +44,8 @@ export const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         id="garment-name"
         className={`modal__input modal__input-garment-name`}
         type="text"
-        name={name}
+        name={`name of clothes`}
+        value={name}
         placeholder="Name"
         minLength="1"
         maxLength="30"
@@ -57,7 +58,8 @@ export const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         id="card-url"
         className={`modal__input modal__input-garment-url`}
         type="url"
-        name={imageUrl}
+        name="imageUrl"
+        value={imageUrl}
         placeholder="Image URL"
         pattern="https://.*"
         onChange={handleImageChange}

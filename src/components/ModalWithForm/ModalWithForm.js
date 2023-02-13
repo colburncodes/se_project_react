@@ -15,7 +15,7 @@ export function ModalWithForm({
         <button
           className="modal__close"
           type="button"
-          onClick={() => closeModal(null)}
+          onClick={closeModal}
         ></button>
         <h1 className="modal__title">{title}</h1>
         <form onSubmit={onSubmit} className={`modal__form modal__form-${name}`}>
