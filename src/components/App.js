@@ -31,22 +31,30 @@ function App() {
 
   const closeModal = () => setActiveModal("");
 
-  useEffect(() => {
-    api
+  const fetchWeatherData = async () => {
+    await api
       .getWeatherData(location, API_KEY)
       .then((data) => {
         setWeatherData(data);
       })
       .catch((err) => console.error(err));
-  }, []);
+  };
 
-  useEffect(() => {
-    mockApi
+  const fetchClothingItems = async () => {
+    await mockApi
       .getItems()
       .then((data) => {
         setClothingItems(data);
       })
       .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    // Parallel execution to allow multiple async operations.
+    // Simplifying error handling easier to maintain
+    Promise.all([fetchWeatherData(), fetchClothingItems()]).catch((error) =>
+      console.error(error)
+    );
   }, []);
 
   function handleAddItemSubmit(name, imageUrl, weather) {
