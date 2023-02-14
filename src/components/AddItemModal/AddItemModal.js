@@ -44,7 +44,7 @@ export const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         id="garment-name"
         className={`modal__input modal__input-garment-name`}
         type="text"
-        name={`name of clothes`}
+        name="nameOfClothes"
         value={name}
         placeholder="Name"
         minLength="1"

@@ -1,18 +1,18 @@
 import React from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
-export function ClothesSection({ cards, onCardClick }) {
+export function ClothesSection({ cards, handleAddClick, onCardClick }) {
   return (
     <div className="clothes__section">
       <div className="clothes__section-info">
-        {/* <h1 className="clothes__section-title">Your items</h1>
+        <h2 className="clothes__section-title">Your items</h2>
         <button
-          className="header__add-clothes"
+          className="clothes__button-add"
           type="button"
           onClick={handleAddClick}
         >
           + Add new
-        </button> */}
+        </button>
       </div>
       <div className="clothes__section-container">
         <ul className="clothes__section-items">
