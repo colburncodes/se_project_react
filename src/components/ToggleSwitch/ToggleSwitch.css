@@ -2,13 +2,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 56px;
-  height: 28px;
+  height: 26px;
   margin: 38px 20px 0 0;
   background-color: #fff;
-  border-radius: 20px;
-  border: 2px solid #7e7e7e;
+  border-radius: 22px;
+  border: 1px solid #7e7e7e;
   cursor: pointer;
 }
 
@@ -80,7 +80,7 @@
   color: white;
   margin: auto;
   background-color: #000;
-  transition: 0.4s;
+  transition: 0.2s;
   border-radius: 20px;
 }
 

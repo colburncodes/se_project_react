@@ -1,6 +1,9 @@
 .clothes__section {
   display: flex;
+  margin-right: 62px;
+  margin-top: 2px;
 }
+
 .clothes__section-info {
   margin: 0;
   height: 48px;

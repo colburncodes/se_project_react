@@ -71,6 +71,8 @@
 
 .header__avatar {
   border-radius: 50%;
+  position: relative;
+  top: 12px;
   height: 40px;
   width: 40px;
   object-fit: cover;
@@ -80,37 +82,44 @@
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-@media only screen and (min-width: 1024px) {
+@media screen and (max-width: 880px) {
   .header {
-    top: 16px;
-    box-sizing: border-box;
+    margin-top: 56px;
+  }
+  .header__container {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 173px;
+    height: 33px;
   }
 
-  .header__logo {
+  .header__info {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 173px;
+    height: 33px;
     box-sizing: border-box;
   }
 }
 
-@media only screen and (min-width: 880px) {
+@media screen and (max-width: 480px) {
   .header {
-    top: 16px;
-    box-sizing: border-box;
+    margin-top: 28px;
   }
-
-  .header__logo {
-    display: flex;
-    box-sizing: border-box;
+  .header__container {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 126px;
+    height: 24px;
   }
-}
-
-@media only screen and (min-width: 480px) {
-  .header {
-    top: 16px;
-    display: flex;
-    box-sizing: border-box;
-  }
-
-  .header__logo {
-    box-sizing: border-box;
+  .header__info {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 173px;
+    height: 33px;
   }
 }
