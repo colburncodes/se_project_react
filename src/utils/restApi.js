@@ -14,16 +14,15 @@ class MockApi {
   }
 
   getItems = async () => {
-    const response = await fetch(`${this._baseUrl}/items`, {
+    return await this._request(`${this._baseUrl}/items`, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    return this._handleResponse(response);
   };
 
   addNewItem = async ({ name, imageUrl, weather }) => {
-    const response = await fetch(`${this._baseUrl}/items`, {
+    return await this._request(`${this._baseUrl}/items`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,11 +33,10 @@ class MockApi {
         weather,
       }),
     });
-    return this._handleResponse(response);
   };
 
   deleteItem = async (id) => {
-    const response = await fetch(`${this._baseUrl}/items/${id}`, {
+    return await this._request(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +45,6 @@ class MockApi {
         id,
       }),
     });
-    return this._handleResponse(response);
   };
 }
 

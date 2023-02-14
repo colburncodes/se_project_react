@@ -32,6 +32,18 @@ function App() {
   const closeModal = () => setActiveModal("");
 
   useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+    return () => document.removeEventListener("keydown", closeByEscape);
+  }, []);
+
+
+  useEffect(() => {
     // Parallel execution to allow multiple async operations.
     // Simplifying error handling easier to maintain
     Promise.all([api.getWeatherData(location, API_KEY), mockApi.getItems()])
@@ -84,7 +96,11 @@ function App() {
               />
             </Route>
             <Route path="/profile">
-              <Profile clothes={clothingitems} onCardClick={handleCardClick} />
+              <Profile
+                clothes={clothingitems}
+                handleAddClick={() => setActiveModal("create")}
+                onCardClick={handleCardClick}
+              />
             </Route>
           </Switch>
           <Footer />
