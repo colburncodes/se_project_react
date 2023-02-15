@@ -90,15 +90,16 @@
     margin-bottom: 32px;
     padding-left: 19px;
     padding-right: 19px;
-    width: 300px;
+    width: 500px;
     height: 33px;
   }
 
   .header__logo {
     margin-bottom: 32px;
-    width: 99px;
-    height: 23px;
-    top: 39px;
+    width: 66px;
+    height: 18px;
+    top: 43px;
+    left: -144px;
     box-sizing: border-box;
   }
 
@@ -119,51 +120,23 @@
     margin-bottom: 32px;
     padding-left: 19px;
     padding-right: 19px;
-    width: 173px;
-    height: 33px;
+    width: 241px;
+    height: 24px;
     box-sizing: border-box;
+    left: -164px;
+    top: 43px;
   }
 
-  .toggleswitch__container {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 59px;
-    height: 28px;
-    box-sizing: border-box;
-    display: flex;
-    top: 64px;
-  }
 
-  .toggleswitch {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 173px;
-    height: 33px;
-    box-sizing: border-box;
-  }
-
-  .toggleswitch__f {
-    display: flex;
-    flex-direction: row;
-    top: -7px;
-    position: relative;
-  }
-
-  .toggleswitch__c {
-    display: flex;
-    flex-direction: row;
-    top: -7px;
-    position: relative;
-  }
 
   .header__add-clothes {
     display: flex;
     flex-direction: row;
     top: 5px;
     position: relative;
-    height: 12px;
+    height: 13px;
+    width: 84px;
+    left: -29px;
   }
 
   .header__username {
@@ -174,7 +147,7 @@
     height: 33px;
     box-sizing: border-box;
     top: 56px;
-    left: -15px;
+    left: -32px;
   }
 
   .header__avatar {
@@ -188,21 +161,32 @@
   .header {
     margin-top: 28px;
   }
+
+  .header__logo {
+    height: 17px;
+    left: -157px;
+    top: 48px;
+  }
+
+  .header__date-location {
+    height: 12px;
+    width: 223px;
+    left: -192px;
+    top: 6px;
+  }
+
   .header__container {
     margin-bottom: 32px;
     padding-left: 19px;
     padding-right: 19px;
-    width: 126px;
+    width: 200px;
     height: 24px;
   }
   .header__info {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 173px;
-    height: 33px;
+    width: 231px;
+    height: 31px;
     box-sizing: border-box;
-    left: -473px;
+    left: -785px;
     position: relative;
     display: flex;
     flex-direction: row;

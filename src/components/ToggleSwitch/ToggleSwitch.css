@@ -105,3 +105,39 @@
 .toggleswitch__input + .toggleswitch__slider:before {
   content: "F";
 }
+
+@media screen and (max-width: 880px) {
+  .toggleswitch__container {
+    margin-bottom: 32px;
+    width: 54px;
+    height: 24px;
+    box-sizing: border-box;
+    display: flex;
+    top: 64px;
+    left: -30px;
+  }
+  
+  .toggleswitch {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 173px;
+    height: 33px;
+    box-sizing: border-box;
+  }
+  
+  .toggleswitch__f {
+    display: flex;
+    flex-direction: row;
+    top: -7px;
+    position: relative;
+  }
+  
+  .toggleswitch__c {
+    display: flex;
+    flex-direction: row;
+    top: -7px;
+    position: relative;
+  }
+  
+}

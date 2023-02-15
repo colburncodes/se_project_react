@@ -98,7 +98,21 @@
     margin-bottom: 32px;
     padding-left: 19px;
     padding-right: 19px;
-    width: 173px;
-    height: 33px;
+    width: 427px;
+    height: 74px;
+  }
+
+  .weather__temperature {
+    left: -15px;
+    display: flex;
+    position: relative;
+  }
+
+  .weather__sunny {
+    left: 256px;
+  }
+
+  .weather__cloud-union {
+    left: 29px;
   }
 }
