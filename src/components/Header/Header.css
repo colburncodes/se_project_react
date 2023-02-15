@@ -85,6 +85,7 @@
 @media screen and (max-width: 880px) {
   .header {
     margin-top: 56px;
+    font-size: 16px;
   }
   .header__container {
     margin-bottom: 32px;
@@ -92,6 +93,7 @@
     padding-right: 19px;
     width: 500px;
     height: 33px;
+    font-size: 16px;
   }
 
   .header__logo {
@@ -110,10 +112,11 @@
     width: 173px;
     height: 33px;
     box-sizing: border-box;
-    left: -517px;
+    left: -490px;
     position: relative;
     display: flex;
     flex-direction: row;
+    font-size: 16px;
   }
 
   .header__date-location {
@@ -125,6 +128,7 @@
     box-sizing: border-box;
     left: -164px;
     top: 43px;
+    font-size: 15px;
   }
 
 
@@ -137,6 +141,7 @@
     height: 13px;
     width: 84px;
     left: -29px;
+    font-size: 16px;
   }
 
   .header__username {
@@ -148,6 +153,7 @@
     box-sizing: border-box;
     top: 56px;
     left: -32px;
+    font-size: 16px;
   }
 
   .header__avatar {
