@@ -55,6 +55,7 @@ function App() {
   }, []);
 
   function handleAddItemSubmit(name, imageUrl, weather) {
+    setIsLoading(true);
     mockApi
       .addNewItem({ name, imageUrl, weather })
       .then((item) => {
