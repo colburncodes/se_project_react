@@ -22,20 +22,17 @@
   margin-left: 30px;
 }
 
-@media only screen and (max-width: 1024px) {
-  .main {
-    display: flex;
-    width: 1360px;
-    height: 387px;
-  }
-
-}
 
 @media only screen and (max-width: 880px) {
   .main {
     display: flex;
     width: 1360px;
     height: 387px;
+  }
+  .main__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
   }
 }
 

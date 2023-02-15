@@ -90,8 +90,16 @@
     margin-bottom: 32px;
     padding-left: 19px;
     padding-right: 19px;
-    width: 173px;
+    width: 300px;
     height: 33px;
+  }
+
+  .header__logo {
+    margin-bottom: 32px;
+    width: 99px;
+    height: 23px;
+    top: 39px;
+    box-sizing: border-box;
   }
 
   .header__info {
@@ -101,6 +109,78 @@
     width: 173px;
     height: 33px;
     box-sizing: border-box;
+    left: -517px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .header__date-location {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 173px;
+    height: 33px;
+    box-sizing: border-box;
+  }
+
+  .toggleswitch__container {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 59px;
+    height: 28px;
+    box-sizing: border-box;
+    display: flex;
+    top: 64px;
+  }
+
+  .toggleswitch {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 173px;
+    height: 33px;
+    box-sizing: border-box;
+  }
+
+  .toggleswitch__f {
+    display: flex;
+    flex-direction: row;
+    top: -7px;
+    position: relative;
+  }
+
+  .toggleswitch__c {
+    display: flex;
+    flex-direction: row;
+    top: -7px;
+    position: relative;
+  }
+
+  .header__add-clothes {
+    display: flex;
+    flex-direction: row;
+    top: 5px;
+    position: relative;
+    height: 12px;
+  }
+
+  .header__username {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 173px;
+    height: 33px;
+    box-sizing: border-box;
+    top: 56px;
+    left: -15px;
+  }
+
+  .header__avatar {
+    display: flex;
+    top: 36px;
+    left: -19px;
   }
 }
 
@@ -121,5 +201,19 @@
     padding-right: 19px;
     width: 173px;
     height: 33px;
+    box-sizing: border-box;
+    left: -473px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .header__username {
+    margin-bottom: 32px;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 173px;
+    height: 33px;
+    box-sizing: border-box;
   }
 }

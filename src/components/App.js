@@ -17,6 +17,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleCardClick = (card) => {
@@ -42,7 +43,6 @@ function App() {
     return () => document.removeEventListener("keydown", closeByEscape);
   }, []);
 
-
   useEffect(() => {
     // Parallel execution to allow multiple async operations.
     // Simplifying error handling easier to maintain
@@ -61,7 +61,8 @@ function App() {
         setClothingItems([item, ...clothingitems]);
         closeModal();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => setIsLoading(false));
   }
 
   function handleDeleteItemSubmit() {
@@ -108,6 +109,7 @@ function App() {
         {activeModal === "create" && (
           <AddItemModal
             type={"create"}
+            isLoading={isLoading}
             isOpen={activeModal === "create"}
             onCloseModal={closeModal}
             onAddItem={handleAddItemSubmit}
