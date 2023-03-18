@@ -1,14 +1,14 @@
 import React from "react";
 import "./ItemModal.css";
 
-export function ItemModal({ card, onClose, onDelete }) {
+export function ItemModal({ card, onCloseModal, onDelete }) {
   return (
     <div className={`modal__preview`}>
       <div className="modal__container-preview">
         <button
           className="modal__close-preview"
           type="button"
-          onClick={() => onClose(null)}
+          onClick={() => onCloseModal(null)}
         ></button>
 
         <div className="modal__label-preview">

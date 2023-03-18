@@ -6,7 +6,12 @@ import { currentDate } from "../../utils/constants";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 
-export function Header({ weatherData, handleAddClick }) {
+export function Header({
+  weatherData,
+  handleAddClick,
+  handleLoginClick,
+  handleRegisterClick,
+}) {
   if (!weatherData) return null;
 
   const userName = "Terrance Tegegne";
@@ -22,6 +27,20 @@ export function Header({ weatherData, handleAddClick }) {
         </p>
       </div>
       <div className="header__info">
+          <button
+          className="header__register"
+          type="button"
+          onClick={handleRegisterClick}
+        >
+          Sign Up
+        </button>
+        <button
+          className="header__login"
+          type="button"
+          onClick={handleLoginClick}
+        >
+          Log in
+        </button>
         <ToggleSwitch />
         <button
           className="header__add-clothes"

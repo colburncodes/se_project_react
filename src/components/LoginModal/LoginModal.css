@@ -1,0 +1,9 @@
+.modal__label-password {
+  margin-top: 24px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 37px;
+  display: flex;
+}

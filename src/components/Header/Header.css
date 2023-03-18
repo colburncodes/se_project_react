@@ -40,6 +40,24 @@
   left: -121px;
 }
 
+.header__login {
+  border: none;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background: transparent;
+}
+
+.header__register {
+  border: none;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background: transparent;
+}
+
 .header__add-clothes {
   height: 24px;
   width: 145px;
@@ -50,6 +68,14 @@
   line-height: 24px;
   border: none;
   background: transparent;
+}
+
+.header__login:hover {
+  cursor: pointer;
+}
+
+.header__register:hover {
+  cursor: pointer;
 }
 
 .header__add-clothes:hover {

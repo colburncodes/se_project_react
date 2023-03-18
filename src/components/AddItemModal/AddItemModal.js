@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 
-export const AddItemModal = ({
-  isOpen,
-  isLoading,
-  onAddItem,
-  onCloseModal,
-}) => {
-  const [name, setName] = useState("");
+export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal }) => {
+  const [itemName, setItemName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
 
   useEffect(() => {
-    setName("");
+    setItemName("");
     setImageUrl("");
     setWeather("");
   }, [isOpen]);
 
   function handleNameChange(e) {
-    setName(e.target.value);
+    setItemName(e.target.value);
   }
 
   function handleImageChange(e) {
@@ -37,7 +32,7 @@ export const AddItemModal = ({
   return (
     <ModalWithForm
       title="New Garment"
-      name="create"
+      name={name}
       buttonText={isLoading ? "Saving..." : "Save"}
       isOpen={isOpen}
       onAddItem={onAddItem}
@@ -50,7 +45,7 @@ export const AddItemModal = ({
         className={`modal__input modal__input-garment-name`}
         type="text"
         name="nameOfClothes"
-        value={name}
+        value={itemName}
         placeholder="Name"
         minLength="1"
         maxLength="30"
