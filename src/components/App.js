@@ -8,16 +8,20 @@ import { ItemModal } from "./ItemModal/ItemModal";
 import { api } from "../utils/weatherApi";
 import { mockApi } from "../utils/restApi";
 import { location, API_KEY } from "../utils/constants";
+import { CurrentUserContext } from "../context/CurrentUserContext";
 import { CurrentTemperatureUnitContext } from "../context/CurrentTemperatureUnitContext";
 import { AddItemModal } from "./AddItemModal/AddItemModal";
 import { LoginModal } from "./LoginModal/LoginModal";
 import { RegisterModal } from "./RegisterModal/RegisterModal";
+import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 import "./App.css";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -97,72 +101,75 @@ function App() {
 
   return (
     <div className="App">
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <div className="App__content">
-          <Header
-            weatherData={weatherData}
-            handleAddClick={handleAddClick}
-            handleLoginClick={handleLoginClick}
-            handleRegisterClick={handleRegisterClick}
-          />
-          <Switch>
-            <Route exact path="/">
-              <Main
-                weatherData={weatherData}
-                cards={clothingitems}
-                onCardClick={handleCardClick}
-              />
-            </Route>
-            <Route path="/profile">
-              <Profile
-                clothes={clothingitems}
-                handleAddClick={handleAddClick}
-                onCardClick={handleCardClick}
-              />
-            </Route>
-          </Switch>
-          <Footer />
-        </div>
+      <CurrentUserContext.Provider value={currentUser}>
+        <CurrentTemperatureUnitContext.Provider
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        >
+          <div className="App__content">
+            <Header
+              isLoggedIn={isLoggedIn}
+              weatherData={weatherData}
+              handleAddClick={handleAddClick}
+              handleLoginClick={handleLoginClick}
+              handleRegisterClick={handleRegisterClick}
+            />
+            <Switch>
+              <Route exact path="/">
+                <Main
+                  weatherData={weatherData}
+                  cards={clothingitems}
+                  onCardClick={handleCardClick}
+                />
+              </Route>
+              <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
+                <Profile
+                  clothes={clothingitems}
+                  handleAddClick={handleAddClick}
+                  onCardClick={handleCardClick}
+                />
+              </ProtectedRoute>
+            </Switch>
+            <Footer />
+          </div>
 
-        {isRegisterModalOpen && (
-          <RegisterModal
-            name="register"
-            isOpen={isRegisterModalOpen}
-            isLoading={isLoading}
-            onCloseModal={closeModal}
-          />
-        )}
+          {isRegisterModalOpen && (
+            <RegisterModal
+              name="register"
+              isOpen={isRegisterModalOpen}
+              isLoading={isLoading}
+              onCloseModal={closeModal}
+            />
+          )}
 
-        {isLoginModalOpen && (
-          <LoginModal
-            name="login"
-            isOpen={isLoginModalOpen}
-            isLoading={isLoading}
-            onCloseModal={closeModal}
-          />
-        )}
+          {isLoginModalOpen && (
+            <LoginModal
+              name="login"
+              isOpen={isLoginModalOpen}
+              isLoading={isLoading}
+              onCloseModal={closeModal}
+            />
+          )}
 
-        {isAddItemModalOpen && (
-          <AddItemModal
-            name="create"
-            isLoading={isLoading}
-            isOpen={isAddItemModalOpen}
-            onCloseModal={closeModal}
-            onAddItem={handleAddItemSubmit}
-          />
-        )}
+          {isAddItemModalOpen && (
+            <AddItemModal
+              name="create"
+              isLoading={isLoading}
+              isOpen={isAddItemModalOpen}
+              onCloseModal={closeModal}
+              onAddItem={handleAddItemSubmit}
+            />
+          )}
 
-        {isImagePreviewOpen && (
-          <ItemModal
-            isOpen={isImagePreviewOpen}
-            card={selectedCard}
-            onCloseModal={closeModal}
-            onDelete={handleDeleteItemSubmit}
-          />
-        )}
-      </CurrentTemperatureUnitContext.Provider>
+          {isImagePreviewOpen && (
+            <ItemModal
+              isOpen={isImagePreviewOpen}
+              card={selectedCard}
+              onCloseModal={closeModal}
+              onDelete={handleDeleteItemSubmit}
+            />
+          )}
+        </CurrentTemperatureUnitContext.Provider>
+      </CurrentUserContext.Provider>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 
 export function Header({
+  isLoggedIn,
   weatherData,
   handleAddClick,
   handleLoginClick,
@@ -27,7 +28,7 @@ export function Header({
         </p>
       </div>
       <div className="header__info">
-          <button
+        <button
           className="header__register"
           type="button"
           onClick={handleRegisterClick}
