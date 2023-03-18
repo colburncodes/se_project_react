@@ -10,19 +10,30 @@ import { mockApi } from "../utils/restApi";
 import { location, API_KEY } from "../utils/constants";
 import { CurrentTemperatureUnitContext } from "../context/CurrentTemperatureUnitContext";
 import { AddItemModal } from "./AddItemModal/AddItemModal";
+import { LoginModal } from "./LoginModal/LoginModal";
+import { RegisterModal } from "./RegisterModal/RegisterModal";
 import "./App.css";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
-  const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
+  const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
+  const handleLoginClick = () => setIsLoginModalOpen(true);
+
+  const handleAddClick = () => setIsAddItemModalOpen(true);
+
+  const handleRegisterClick = () => setIsRegisterModalOpen(true);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
-    setActiveModal("preview");
+    setIsImagePreviewOpen(true);
   };
 
   const handleToggleSwitchChange = () =>
@@ -30,7 +41,12 @@ function App() {
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
 
-  const closeModal = () => setActiveModal("");
+  const closeModal = () => {
+    setIsImagePreviewOpen(false);
+    setIsLoginModalOpen(false);
+    setIsAddItemModalOpen(false);
+    setIsRegisterModalOpen(false);
+  };
 
   useEffect(() => {
     const closeByEscape = (e) => {
@@ -87,7 +103,9 @@ function App() {
         <div className="App__content">
           <Header
             weatherData={weatherData}
-            handleAddClick={() => setActiveModal("create")}
+            handleAddClick={handleAddClick}
+            handleLoginClick={handleLoginClick}
+            handleRegisterClick={handleRegisterClick}
           />
           <Switch>
             <Route exact path="/">
@@ -100,27 +118,47 @@ function App() {
             <Route path="/profile">
               <Profile
                 clothes={clothingitems}
-                handleAddClick={() => setActiveModal("create")}
+                handleAddClick={handleAddClick}
                 onCardClick={handleCardClick}
               />
             </Route>
           </Switch>
           <Footer />
         </div>
-        {activeModal === "create" && (
-          <AddItemModal
-            type={"create"}
+
+        {isRegisterModalOpen && (
+          <RegisterModal
+            name="register"
+            isOpen={isRegisterModalOpen}
             isLoading={isLoading}
-            isOpen={activeModal === "create"}
+            onCloseModal={closeModal}
+          />
+        )}
+
+        {isLoginModalOpen && (
+          <LoginModal
+            name="login"
+            isOpen={isLoginModalOpen}
+            isLoading={isLoading}
+            onCloseModal={closeModal}
+          />
+        )}
+
+        {isAddItemModalOpen && (
+          <AddItemModal
+            name="create"
+            isLoading={isLoading}
+            isOpen={isAddItemModalOpen}
             onCloseModal={closeModal}
             onAddItem={handleAddItemSubmit}
           />
         )}
-        {activeModal === "preview" && (
+
+        {isImagePreviewOpen && (
           <ItemModal
-            isOpen={activeModal === "preview"}
+            isOpen={isImagePreviewOpen}
             card={selectedCard}
-            onClose={closeModal}
+            onCloseModal={closeModal}
             onDelete={handleDeleteItemSubmit}
           />
         )}
