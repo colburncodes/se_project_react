@@ -40,6 +40,10 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
+  function handleLoginUser() {
+    setIsLoggedIn(true);
+  }
+
   const handleToggleSwitchChange = () =>
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
