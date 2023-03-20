@@ -7,3 +7,21 @@
   margin-left: 37px;
   display: flex;
 }
+
+.modal__auth-text {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 74px;
+  left: 170px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.3)
+}
+
+.modal__form-link {
+  color: rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  margin-left: 5px;
+}
