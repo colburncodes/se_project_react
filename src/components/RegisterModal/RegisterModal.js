@@ -1,4 +1,6 @@
+import "./RegisterModal.css";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 
 export const RegisterModal = ({
@@ -97,6 +99,12 @@ export const RegisterModal = ({
         required
       />
       <span className="modal__input-error avatar-url-error"></span>
+      <p className="modal__auth-text">
+        or{" "}
+        <Link className="modal__form-link" to="/signin">
+          Login
+        </Link>
+      </p>
     </ModalWithForm>
   );
 };

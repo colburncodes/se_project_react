@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
+import { Link } from "react-router-dom";
 import "./LoginModal.css";
 
 export const LoginModal = ({
@@ -28,9 +29,9 @@ export const LoginModal = ({
 
   return (
     <ModalWithForm
-      title="Log in"
+      title={"Log in"}
       name={name}
-      buttonText={isLoading ? "Logging in..." : "Log in"}
+      buttonText={isLoading ? "Logging in..." : "Login"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
       closeModal={onCloseModal}
@@ -61,6 +62,12 @@ export const LoginModal = ({
         required
       />
       <span className="modal__input-error password-error"></span>
+      <p className="modal__auth-text">
+        or{" "}
+        <Link className="modal__form-link" to="/signin">
+          Register
+        </Link>
+      </p>
     </ModalWithForm>
   );
 };

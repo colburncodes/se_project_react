@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
 import { Main } from "./Main/Main";
@@ -40,7 +40,7 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
-  function handleLoginUser() {
+  function handleLoggedInUser() {
     setIsLoggedIn(true);
   }
 
@@ -77,6 +77,14 @@ function App() {
       })
       .catch((error) => console.error(error));
   }, []);
+
+  function onRegister() {
+    console.log("RegisterUser");
+  }
+
+  function onLogin() {
+    console.log("LoginUser");
+  }
 
   function handleAddItemSubmit(name, imageUrl, weather) {
     setIsLoading(true);
@@ -118,6 +126,7 @@ function App() {
               handleRegisterClick={handleRegisterClick}
             />
             <Switch>
+              {/* <ProtectedRoute exact path="/" loggedIn={isLoggedIn}> */}
               <Route exact path="/">
                 <Main
                   weatherData={weatherData}
@@ -125,6 +134,7 @@ function App() {
                   onCardClick={handleCardClick}
                 />
               </Route>
+              {/* </ProtectedRoute> */}
               <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
                 <Profile
                   clothes={clothingitems}
@@ -132,6 +142,15 @@ function App() {
                   onCardClick={handleCardClick}
                 />
               </ProtectedRoute>
+              <Route path="/signup">
+                <RegisterModal onRegister={onRegister} />
+              </Route>
+              <Route path="/signin">
+                <LoginModal onLogin={onLogin} />
+              </Route>
+              <Route>
+                {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
+              </Route>
             </Switch>
             <Footer />
           </div>

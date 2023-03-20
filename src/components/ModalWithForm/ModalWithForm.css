@@ -114,7 +114,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 124px;
+  width: 105px;
   height: 36px;
   background: rgba(0, 0, 0, 0.3);
   color: #fff;
@@ -124,8 +124,31 @@
   line-height: 20px;
   border-radius: 4px;
   padding: 8px 10px;
-  margin-top: 32px;
-  margin-left: 28px;
+  top: -23px;
+  position: relative;
+  left: 34px;
+  border: 0;
+  margin-bottom: 44px;
+  cursor: pointer;
+}
+
+.modal__save-button-signin {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 105px;
+  height: 36px;
+  background: #000;
+  color: #fff;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 4px;
+  padding: 8px 10px;
+  top: -23px;
+  position: relative;
+  left: 34px;
   border: 0;
   margin-bottom: 44px;
   cursor: pointer;

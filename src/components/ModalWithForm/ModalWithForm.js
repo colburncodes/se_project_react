@@ -21,9 +21,15 @@ export function ModalWithForm({
         <form onSubmit={onSubmit} className={`modal__form modal__form-${name}`}>
           <fieldset className="modal__form-fieldset">
             {children}
-            <button className="modal__save-button" type="submit">
-              {buttonText}
-            </button>
+            {buttonText === "Next" ? (
+              <button className="modal__save-button-signin" type="submit">
+                {buttonText}
+              </button>
+            ) : (
+              <button className="modal__save-button" type="submit">
+                {buttonText}
+              </button>
+            )}
           </fieldset>
         </form>
       </div>
