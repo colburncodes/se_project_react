@@ -10,6 +10,8 @@
   flex-direction: column;
   background: rgba(0, 0, 0, 0.3);
   transition: visibility 0s, opacity 0.5s linear;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal__container-preview {

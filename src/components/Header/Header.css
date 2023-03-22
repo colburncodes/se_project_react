@@ -16,7 +16,7 @@
 .header__info {
   display: flex;
   align-items: flex-end;
-  margin-right: 190px;
+  margin-right: 328px;
 }
 
 .header__logo {
@@ -47,6 +47,9 @@
   font-size: 20px;
   line-height: 24px;
   background: transparent;
+  display: flex;
+  left: 218px;
+  position: relative;
 }
 
 .header__register {
@@ -56,6 +59,9 @@
   font-size: 20px;
   line-height: 24px;
   background: transparent;
+  display: flex;
+  position: relative;
+  left: 213px;
 }
 
 .header__add-clothes {

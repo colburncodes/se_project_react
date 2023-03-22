@@ -43,17 +43,24 @@ export function Header({
           Log in
         </button>
         <ToggleSwitch />
-        <button
-          className="header__add-clothes"
-          type="button"
-          onClick={handleAddClick}
-        >
-          + Add clothes
-        </button>
-        <p className="header__username">{userName}</p>
-        <Link to={"/profile"}>
-          <img className="header__avatar" alt="Avatar" src={avatarPath} />
-        </Link>
+
+        {isLoggedIn ? (
+          <>
+            <button
+              className="header__add-clothes"
+              type="button"
+              onClick={handleAddClick}
+            >
+              + Add clothes
+            </button>
+            <p className="header__username">{userName}</p>
+            <Link to={"/profile"}>
+              <img className="header__avatar" alt="Avatar" src={avatarPath} />
+            </Link>
+          </>
+        ) : (
+          <div></div>
+        )}
       </div>
     </header>
   );
