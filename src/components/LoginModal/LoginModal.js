@@ -64,7 +64,7 @@ export const LoginModal = ({
       <span className="modal__input-error password-error"></span>
       <p className="modal__auth-text">
         or{" "}
-        <Link className="modal__form-link" to="/signin">
+        <Link className="modal__form-link" to="/signup">
           Register
         </Link>
       </p>

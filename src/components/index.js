@@ -1,0 +1,9 @@
+export { Header } from "./Header/Header";
+export { Footer } from "./Footer/Footer";
+export { Main } from "./Main/Main";
+export { Profile } from "./Profile/Profile";
+export { ItemModal } from "./ItemModal/ItemModal";
+export { AddItemModal } from "./AddItemModal/AddItemModal";
+export { LoginModal } from "./LoginModal/LoginModal";
+export { RegisterModal } from "./RegisterModal/RegisterModal";
+export { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";

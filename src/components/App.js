@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { Header } from "./Header/Header";
-import { Footer } from "./Footer/Footer";
-import { Main } from "./Main/Main";
-import { Profile } from "./Profile/Profile";
-import { ItemModal } from "./ItemModal/ItemModal";
 import { api } from "../utils/weatherApi";
 import { mockApi } from "../utils/restApi";
 import { location, API_KEY } from "../utils/constants";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { CurrentTemperatureUnitContext } from "../context/CurrentTemperatureUnitContext";
-import { AddItemModal } from "./AddItemModal/AddItemModal";
-import { LoginModal } from "./LoginModal/LoginModal";
-import { RegisterModal } from "./RegisterModal/RegisterModal";
-import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
+
+import {
+  Header,
+  Main,
+  Profile,
+  Footer,
+  ProtectedRoute,
+  RegisterModal,
+  LoginModal,
+  AddItemModal,
+  ItemModal,
+} from "./index";
+
 import "./App.css";
 
 function App() {
