@@ -3,7 +3,13 @@ import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 import { Link } from "react-router-dom";
 import "./LoginModal.css";
 
-export const LoginModal = ({ name, isOpen, isLoading, onCloseModal, handleLogin }) => {
+export const LoginModal = ({
+  name,
+  isOpen,
+  isLoading,
+  onCloseModal,
+  handleUserLogin,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,7 +24,7 @@ export const LoginModal = ({ name, isOpen, isLoading, onCloseModal, handleLogin 
   function handleSubmit(e) {
     e.preventDefault();
     console.log("Login User");
-    handleLogin(email, password);
+    handleUserLogin(email, password);
   }
 
   return (
