@@ -87,6 +87,7 @@ function App() {
   }, []);
 
   function handleRegistration({ name, avatar, email, password }) {
+    setIsLoading(true);
     return auth
       .register(name, avatar, email, password)
       .then((res) => {
@@ -97,8 +98,16 @@ function App() {
       .catch((err) => console.error(err));
   }
 
-  function handleLogin(email, password) {
-    console.log(email, password);
+  function handleUserLogin(email, password) {
+    setIsLoading(true);
+    return auth
+      .login(email, password)
+      .then((res) => {
+        setIsLoggedIn(true);
+        setCurrentUser(res);
+        closeModal();
+      })
+      .finally(() => setIsLoading(false));
   }
 
   function handleAddItemSubmit(name, imageUrl, weather) {
@@ -160,7 +169,7 @@ function App() {
               <RegisterModal />
             </Route>
             <Route path="/signin">
-              <LoginModal handleLogin={handleLogin} />
+              <LoginModal />
             </Route>
             <Route>
               {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
@@ -183,6 +192,7 @@ function App() {
               isOpen={isLoginModalOpen}
               isLoading={isLoading}
               onCloseModal={closeModal}
+              handleUserLogin={handleUserLogin}
             />
           )}
 
