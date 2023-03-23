@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { api } from "../utils/weatherApi";
 import { mockApi } from "../utils/restApi";
+import * as auth from "../auth";
 import { location, API_KEY } from "../utils/constants";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { CurrentTemperatureUnitContext } from "../context/CurrentTemperatureUnitContext";
@@ -24,6 +25,7 @@ function App() {
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
+  const [activeModal, setActiveModal] = useState("");
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,9 +46,11 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
-  function handleLoggedInUser() {
-    setIsLoggedIn(true);
-  }
+  const handleToggleModal = () => {
+    activeModal === "login"
+      ? setActiveModal("register")
+      : setActiveModal("login");
+  };
 
   const handleToggleSwitchChange = () =>
     currentTemperatureUnit === "F"
@@ -82,12 +86,19 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
-  function onRegister() {
-    console.log("RegisterUser");
+  function handleRegistration({ name, avatar, email, password }) {
+    return auth
+      .register(name, avatar, email, password)
+      .then((res) => {
+        setIsLoggedIn(true);
+        setCurrentUser(res);
+        closeModal();
+      })
+      .catch((err) => console.error(err));
   }
 
-  function onLogin() {
-    console.log("LoginUser");
+  function handleLogin(email, password) {
+    console.log(email, password);
   }
 
   function handleAddItemSubmit(name, imageUrl, weather) {
@@ -121,50 +132,48 @@ function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-          <div className="App__content">
-            <Header
-              isLoggedIn={isLoggedIn}
-              weatherData={weatherData}
-              handleAddClick={handleAddClick}
-              handleLoginClick={handleLoginClick}
-              handleRegisterClick={handleRegisterClick}
-            />
-            <Switch>
-              {/* <ProtectedRoute exact path="/" loggedIn={isLoggedIn}> */}
-              <Route exact path="/">
-                <Main
-                  weatherData={weatherData}
-                  cards={clothingitems}
-                  onCardClick={handleCardClick}
-                />
-              </Route>
-              {/* </ProtectedRoute> */}
-              <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
-                <Profile
-                  clothes={clothingitems}
-                  handleAddClick={handleAddClick}
-                  onCardClick={handleCardClick}
-                />
-              </ProtectedRoute>
-              <Route path="/signup">
-                <RegisterModal onRegister={onRegister} />
-              </Route>
-              <Route path="/signin">
-                <LoginModal onLogin={onLogin} />
-              </Route>
-              <Route>
-                {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
-              </Route>
-            </Switch>
-            <Footer />
-          </div>
+          <Header
+            isLoggedIn={isLoggedIn}
+            weatherData={weatherData}
+            handleAddClick={handleAddClick}
+            handleLoginClick={handleLoginClick}
+            handleRegisterClick={handleRegisterClick}
+          />
+          <Switch>
+            {/* <ProtectedRoute exact path="/" loggedIn={isLoggedIn}> */}
+            <Route exact path="/">
+              <Main
+                weatherData={weatherData}
+                cards={clothingitems}
+                onCardClick={handleCardClick}
+              />
+            </Route>
+            {/* </ProtectedRoute> */}
+            <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
+              <Profile
+                clothes={clothingitems}
+                handleAddClick={handleAddClick}
+                onCardClick={handleCardClick}
+              />
+            </ProtectedRoute>
+            <Route path="/signup">
+              <RegisterModal />
+            </Route>
+            <Route path="/signin">
+              <LoginModal handleLogin={handleLogin} />
+            </Route>
+            <Route>
+              {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
+            </Route>
+          </Switch>
+          <Footer />
 
           {isRegisterModalOpen && (
             <RegisterModal
-              name="register"
               isOpen={isRegisterModalOpen}
               isLoading={isLoading}
               onCloseModal={closeModal}
+              handleRegistration={handleRegistration}
             />
           )}
 

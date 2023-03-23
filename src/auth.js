@@ -8,9 +8,13 @@ export const register = async (name, avatar, email, password) => {
     },
     body: JSON.stringify({ name, avatar, email, password }),
   })
-    .then((res) => res.json())
-    .then((user) => {
-      return user;
+    .then((res) => {
+      if (res.status === 201) {
+        return res.json();
+      }
+    })
+    .then((res) => {
+      return res;
     })
     .catch((error) => console.error(error.message));
 };
