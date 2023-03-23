@@ -1,19 +1,25 @@
 import "./RegisterModal.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 
 export const RegisterModal = ({
-  name,
   isOpen,
   isLoading,
   onCloseModal,
-  handleSignIn,
+  handleRegistration,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setName] = useState("");
+  const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
+
+  useEffect(() => {
+    setEmail("");
+    setPassword("");
+    setName("");
+    setAvatar("");
+  }, [isOpen]);
 
   function handleEmailChange(e) {
     setEmail(e.target.value);
@@ -33,14 +39,12 @@ export const RegisterModal = ({
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Register User");
-    handleSignIn(email, password);
+    handleRegistration({ name, avatar, email, password });
   }
 
   return (
     <ModalWithForm
       title="Sign up"
-      name={name}
       buttonText={isLoading ? "Saving..." : "Next"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
@@ -77,8 +81,8 @@ export const RegisterModal = ({
         id="name"
         className={`modal__input modal__input-name`}
         type="text"
-        name="username"
-        value={username}
+        name="name"
+        value={name}
         placeholder="Name"
         minLength="1"
         maxLength="30"

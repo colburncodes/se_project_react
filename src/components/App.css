@@ -1,11 +1,13 @@
 .App {
-  display:flex;
+  display: flex;
   position: relative;
   min-height: 100vh;
   margin: 0 auto;
-  background: cover #F3F3F3;
+  background: cover #f3f3f3;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 
 .App__content {
   margin: 0 auto;
@@ -15,7 +17,6 @@
   .App {
     margin: 0 auto;
     padding: 0;
-    left: 75px
+    left: 75px;
   }
 }
-
