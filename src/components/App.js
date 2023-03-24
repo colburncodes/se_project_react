@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { api } from "../utils/weatherApi";
 import { mockApi } from "../utils/restApi";
 import * as auth from "../utils/auth";
@@ -34,7 +34,6 @@ function App() {
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  let history = useHistory();
 
   const handleLoginClick = () => setIsLoginModalOpen(true);
 
@@ -87,22 +86,21 @@ function App() {
 
   // check for a JWT when mounting `App`
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (token) {
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(true);
       auth
         .checkToken(token)
         .then((res) => {
           if (res) {
-            setCurrentUser(res);
-            setIsLoggedIn(true);
-            history.push("/");
+            setCurrentUser(res.data);
           } else {
             localStorage.removeItem("jwt");
           }
         })
         .catch((err) => console.error(err.message));
     }
-  }, [history]);
+  }, [isLoggedIn]);
 
   async function handleRegistration({ name, avatar, email, password }) {
     setIsLoading(true);
@@ -154,8 +152,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="App">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
@@ -179,6 +177,7 @@ function App() {
             </ProtectedRoute>
             <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
               <Profile
+                currentUser={currentUser}
                 clothes={clothingitems}
                 handleAddClick={handleAddClick}
                 onCardClick={handleCardClick}
@@ -228,8 +227,8 @@ function App() {
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
-      </CurrentUserContext.Provider>
-    </div>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

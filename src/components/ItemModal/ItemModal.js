@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../../context/CurrentUserContext";
 import "./ItemModal.css";
 
 export function ItemModal({ card, onCloseModal, onDelete }) {
-  const { currentUser } = React.useContext(CurrentUserContext);
+  // const { currentUser } = React.useContext(CurrentUserContext);
 
   // const isOwner = card.owner._id === currentUser._id;
   // const itemDeleteButtonClassName = `item__delete-button ${
