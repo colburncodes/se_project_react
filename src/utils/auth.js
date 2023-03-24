@@ -9,7 +9,7 @@ export const register = async (name, avatar, email, password) => {
     body: JSON.stringify({ name, avatar, email, password }),
   })
     .then((res) => {
-      if (res.status === 201) {
+      if (res.ok) {
         return res.json();
       }
     })
@@ -35,4 +35,35 @@ export const login = async (email, password) => {
       }
     })
     .catch((error) => console.error(error.message));
+};
+
+export const checkToken = async () => {
+  await fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    header: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => console.error(error.message));
+};
+
+export const updateUser = async (name, avatar, about) => {
+  await fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    header: {
+      "Content-Type": "application/json",
+      body: JSON.stringify({ name, avatar, about }),
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data) {
+        return data;
+      }
+    })
+    .catch((err) => console.error(err.message));
 };

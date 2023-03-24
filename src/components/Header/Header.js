@@ -8,13 +8,14 @@ import "./Header.css";
 
 export function Header({
   isLoggedIn,
+  currentUser,
   weatherData,
   handleAddClick,
   handleLoginClick,
   handleRegisterClick,
 }) {
   if (!weatherData) return null;
-  const username = "Test User";
+
   return (
     <header className="header">
       <div className="header__container">
@@ -51,7 +52,7 @@ export function Header({
             >
               + Add clothes
             </button>
-            <p className="header__username">{username}</p>
+            <p className="header__username">{currentUser}</p>
             <Link to={"/profile"}>
               <img className="header__avatar" alt="Avatar" src={avatarPath} />
             </Link>
