@@ -3,7 +3,8 @@ import { ClothesSection } from "../ClothesSection/ClothesSection";
 import { SideBar } from "../SideBar/SideBar";
 import "./Profile.css";
 
-export function Profile({ clothes, handleAddClick, onCardClick }) {
+export function Profile({ currentUser, clothes, handleAddClick, onCardClick }) {
+  console.log(currentUser);
   return (
     <div className="profile">
       <SideBar />
