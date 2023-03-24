@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import { api } from "../utils/weatherApi";
 import { mockApi } from "../utils/restApi";
-import * as auth from "../auth";
+import * as auth from "../utils/auth";
 import { location, API_KEY } from "../utils/constants";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { CurrentTemperatureUnitContext } from "../context/CurrentTemperatureUnitContext";
@@ -34,6 +34,7 @@ function App() {
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  let history = useHistory();
 
   const handleLoginClick = () => setIsLoginModalOpen(true);
 
@@ -76,8 +77,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Parallel execution to allow multiple async operations.
-    // Simplifying error handling easier to maintain
     Promise.all([api.getWeatherData(location, API_KEY), mockApi.getItems()])
       .then(([weatherInfo, clothing]) => {
         setWeatherData(weatherInfo);
@@ -86,28 +85,47 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
-  function handleRegistration({ name, avatar, email, password }) {
+  // check for a JWT when mounting `App`
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      auth
+        .checkToken(token)
+        .then((res) => {
+          if (res) {
+            setCurrentUser(res);
+            setIsLoggedIn(true);
+            history.push("/");
+          } else {
+            localStorage.removeItem("jwt");
+          }
+        })
+        .catch((err) => console.error(err.message));
+    }
+  }, [history]);
+
+  async function handleRegistration({ name, avatar, email, password }) {
     setIsLoading(true);
-    return auth
-      .register(name, avatar, email, password)
-      .then((res) => {
-        setIsLoggedIn(true);
-        setCurrentUser(res);
-        closeModal();
-      })
-      .catch((err) => console.error(err));
+    try {
+      const res = await auth.register(name, avatar, email, password);
+      setIsLoggedIn(true);
+      setCurrentUser(res);
+      closeModal();
+    } catch (err) {
+      return console.error(err);
+    }
   }
 
-  function handleUserLogin(email, password) {
+  async function handleUserLogin(email, password) {
     setIsLoading(true);
-    return auth
-      .login(email, password)
-      .then((res) => {
-        setIsLoggedIn(true);
-        setCurrentUser(res);
-        closeModal();
-      })
-      .finally(() => setIsLoading(false));
+    try {
+      const res = await auth.login(email, password);
+      setIsLoggedIn(true);
+      setCurrentUser(res);
+      closeModal();
+    } finally {
+      return setIsLoading(false);
+    }
   }
 
   function handleAddItemSubmit(name, imageUrl, weather) {
@@ -144,20 +162,21 @@ function App() {
           <Header
             isLoggedIn={isLoggedIn}
             weatherData={weatherData}
+            currentUser={currentUser}
             handleAddClick={handleAddClick}
             handleLoginClick={handleLoginClick}
             handleRegisterClick={handleRegisterClick}
           />
           <Switch>
-            {/* <ProtectedRoute exact path="/" loggedIn={isLoggedIn}> */}
-            <Route exact path="/">
+            <ProtectedRoute exact path="/" loggedIn={isLoggedIn}>
+              {/* <Route exact path="/"> */}
               <Main
                 weatherData={weatherData}
                 cards={clothingitems}
                 onCardClick={handleCardClick}
               />
-            </Route>
-            {/* </ProtectedRoute> */}
+              {/* </Route> */}
+            </ProtectedRoute>
             <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
               <Profile
                 clothes={clothingitems}
@@ -165,12 +184,6 @@ function App() {
                 onCardClick={handleCardClick}
               />
             </ProtectedRoute>
-            <Route path="/signup">
-              <RegisterModal />
-            </Route>
-            <Route path="/signin">
-              <LoginModal />
-            </Route>
             <Route>
               {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
             </Route>
