@@ -1,4 +1,4 @@
-class MockApi {
+class Api {
   constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
   }
@@ -21,7 +21,7 @@ class MockApi {
     });
   };
 
-  addNewItem = async ({ name, imageUrl, weather }) => {
+  addItem = async ({ name, imageUrl, weather }) => {
     return await this._request(`${this._baseUrl}/items`, {
       method: "POST",
       headers: {
@@ -46,10 +46,20 @@ class MockApi {
       }),
     });
   };
+
+  addCardLike = async (_id) => {
+    return await this._request(`${this._baseUrl}/${_id}/likes`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+  };
 }
 
-export default MockApi;
+export default Api;
 
-export const mockApi = new MockApi({
+export const api = new Api({
   baseUrl: "https://my-json-server.typicode.com/colburncodes/se_project_react",
 });

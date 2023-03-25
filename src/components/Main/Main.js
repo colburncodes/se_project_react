@@ -4,7 +4,7 @@ import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import "./Main.css";
 
-export function Main({ weatherData, cards, onCardClick }) {
+export function Main({ isLoggedIn, weatherData, cards, onCardClick }) {
   const { currentTemperatureUnit } = React.useContext(
     CurrentTemperatureUnitContext
   );
@@ -19,6 +19,8 @@ export function Main({ weatherData, cards, onCardClick }) {
       return "cold";
     }
   };
+
+  const filteredCards = cards.filter((card) => card.weather === weatherType());
 
   return (
     <main className="main">
@@ -45,6 +47,7 @@ export function Main({ weatherData, cards, onCardClick }) {
             .filter((card) => card.weather === weatherType())
             .map((filteredCard) => (
               <ItemCard
+                isLoggedIn={isLoggedIn}
                 key={filteredCard.id}
                 card={filteredCard}
                 onCardClick={onCardClick}
