@@ -20,7 +20,7 @@ export const register = async (name, avatar, email, password) => {
 };
 
 export const login = async (email, password) => {
-  await fetch(`${BASE_URL}/signin`, {
+  return await fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,19 +30,19 @@ export const login = async (email, password) => {
     .then((res) => res.json())
     .then((data) => {
       if (data) {
-        localStorage.setItem("jwt", data.jwt);
+        localStorage.setItem("token", data.token);
         return data;
       }
     })
     .catch((error) => console.error(error.message));
 };
 
-export const checkToken = async () => {
-  await fetch(`${BASE_URL}/users/me`, {
+export const getUser = async (token) => {
+  return await fetch(`${BASE_URL}/users/me`, {
     method: "GET",
-    header: {
+    headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${localStorage.getItem("token")}`,
+      authorization: `Bearer ${localStorage.getItem(token)}`,
     },
   })
     .then((data) => {
@@ -52,12 +52,12 @@ export const checkToken = async () => {
 };
 
 export const updateUser = async (name, avatar, about) => {
-  await fetch(`${BASE_URL}/users/me`, {
+  return await fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
-    header: {
+    headers: {
       "Content-Type": "application/json",
-      body: JSON.stringify({ name, avatar, about }),
     },
+    body: JSON.stringify({ name, avatar, about }),
   })
     .then((res) => res.json())
     .then((data) => {

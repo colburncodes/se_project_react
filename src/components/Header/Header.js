@@ -15,7 +15,7 @@ export function Header({
   handleRegisterClick,
 }) {
   if (!weatherData) return null;
-
+  const username = "Andrew Clark";
   return (
     <header className="header">
       <div className="header__container">
@@ -27,20 +27,27 @@ export function Header({
         </p>
       </div>
       <div className="header__info">
-        <button
-          className="header__register"
-          type="button"
-          onClick={handleRegisterClick}
-        >
-          Sign Up
-        </button>
-        <button
-          className="header__login"
-          type="button"
-          onClick={handleLoginClick}
-        >
-          Log in
-        </button>
+        {isLoggedIn ? (
+          <div></div>
+        ) : (
+          <>
+            <button
+              className="header__register"
+              type="button"
+              onClick={handleRegisterClick}
+            >
+              Sign Up
+            </button>
+            <button
+              className="header__login"
+              type="button"
+              onClick={handleLoginClick}
+            >
+              Log in
+            </button>
+          </>
+        )}
+
         <ToggleSwitch />
 
         {isLoggedIn ? (
@@ -52,7 +59,7 @@ export function Header({
             >
               + Add clothes
             </button>
-            <p className="header__username">{currentUser}</p>
+            <p className="header__username">{username}</p>
             <Link to={"/profile"}>
               <img className="header__avatar" alt="Avatar" src={avatarPath} />
             </Link>

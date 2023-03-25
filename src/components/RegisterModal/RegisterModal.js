@@ -1,9 +1,10 @@
 import "./RegisterModal.css";
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useMemo } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 
 export const RegisterModal = ({
+  form,
   isOpen,
   isLoading,
   onCloseModal,
@@ -13,6 +14,33 @@ export const RegisterModal = ({
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
+  const history = useHistory();
+
+  const isValid = useMemo(() => {
+    return password.length >= 8 && email.length >= 5;
+  }, [email, password]);
+
+  function handleEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlePassword(e) {
+    setPassword(e.target.value);
+  }
+
+  function handleName(e) {
+    setName(e.target.value);
+  }
+
+  function handleAvatar(e) {
+    setAvatar(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleRegistration({ name, avatar, email, password });
+    history.push("/profile");
+  }
 
   useEffect(() => {
     setEmail("");
@@ -21,34 +49,15 @@ export const RegisterModal = ({
     setAvatar("");
   }, [isOpen]);
 
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
-
-  function handleNameChange(e) {
-    setName(e.target.value);
-  }
-
-  function handleAvatarChange(e) {
-    setAvatar(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    handleRegistration({ name, avatar, email, password });
-  }
-
   return (
     <ModalWithForm
+      name={form}
       title="Sign up"
       buttonText={isLoading ? "Saving..." : "Next"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
       closeModal={onCloseModal}
+      disabled={!isValid}
     >
       <label className="modal__label">Email</label>
       <input
@@ -60,7 +69,7 @@ export const RegisterModal = ({
         placeholder="Email"
         minLength="1"
         maxLength="30"
-        onChange={handleEmailChange}
+        onChange={handleEmail}
         required
       />
       <span className="modal__input-error email-error"></span>
@@ -72,7 +81,7 @@ export const RegisterModal = ({
         name="password"
         value={password}
         placeholder="Password"
-        onChange={handlePasswordChange}
+        onChange={handlePassword}
         required
       />
       <span className="modal__input-error password-error"></span>
@@ -86,7 +95,7 @@ export const RegisterModal = ({
         placeholder="Name"
         minLength="1"
         maxLength="30"
-        onChange={handleNameChange}
+        onChange={handleName}
         required
       />
       <span className="modal__input-error name-error"></span>
@@ -99,7 +108,7 @@ export const RegisterModal = ({
         value={avatar}
         placeholder="Avatar URL"
         pattern="https://.*"
-        onChange={handleAvatarChange}
+        onChange={handleAvatar}
         required
       />
       <span className="modal__input-error avatar-url-error"></span>

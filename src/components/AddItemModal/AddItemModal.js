@@ -26,7 +26,7 @@ export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal 
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(name, imageUrl, weather);
+    onAddItem(itemName, imageUrl, weather);
   }
 
   return (

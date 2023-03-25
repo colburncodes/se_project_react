@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./LoginModal.css";
 
 export const LoginModal = ({
@@ -9,9 +9,11 @@ export const LoginModal = ({
   isLoading,
   onCloseModal,
   handleUserLogin,
+  handleToggleModal,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   function handleEmailChange(e) {
     setEmail(e.target.value);
@@ -23,9 +25,14 @@ export const LoginModal = ({
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Login User");
     handleUserLogin(email, password);
+    history.push("/profile");
   }
+
+  useEffect(() => {
+    setEmail("");
+    setPassword("");
+  }, [isOpen]);
 
   return (
     <ModalWithForm
@@ -62,9 +69,13 @@ export const LoginModal = ({
         required
       />
       <span className="modal__input-error password-error"></span>
-      <p className="modal__auth-text">
+      <p className="modal__auth-text-login">
         or{" "}
-        <Link className="modal__form-link" to="/signup">
+        <Link
+          className="modal__form-link"
+          to="/signup"
+          onClick={handleToggleModal}
+        >
           Register
         </Link>
       </p>
