@@ -17,6 +17,7 @@ class Api {
     return await this._request(`${this._baseUrl}/items`, {
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
   };
@@ -26,6 +27,7 @@ class Api {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         name,
@@ -40,6 +42,7 @@ class Api {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         id,
@@ -61,5 +64,5 @@ class Api {
 export default Api;
 
 export const api = new Api({
-  baseUrl: "https://my-json-server.typicode.com/colburncodes/se_project_react",
+  baseUrl: "http://localhost:3001",
 });

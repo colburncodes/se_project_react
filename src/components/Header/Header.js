@@ -13,6 +13,7 @@ export function Header({
   handleAddClick,
   handleLoginClick,
   handleRegisterClick,
+  handleSignOut,
 }) {
   if (!weatherData) return null;
   const username = "Andrew Clark";
@@ -63,6 +64,14 @@ export function Header({
             <Link to={"/profile"}>
               <img className="header__avatar" alt="Avatar" src={avatarPath} />
             </Link>
+
+            <button
+              className="header__add-clothes"
+              type="button"
+              onClick={handleSignOut}
+            >
+              Log out
+            </button>
           </>
         ) : (
           <div></div>
