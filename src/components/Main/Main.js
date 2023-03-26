@@ -9,7 +9,7 @@ export function Main({ isLoggedIn, weatherData, cards, onCardClick }) {
     CurrentTemperatureUnitContext
   );
 
-  let temperature = weatherData.main?.temp;
+  let temperature = weatherData?.main?.temp;
   const weatherType = () => {
     if (temperature >= 86) {
       return "hot";
@@ -20,7 +20,11 @@ export function Main({ isLoggedIn, weatherData, cards, onCardClick }) {
     }
   };
 
-  const filteredCards = cards.filter((card) => card.weather === weatherType());
+  const temperatureConvertToCelcius = (temperature) => {
+    return Math.round(((temperature - 32) * 5) / 9);
+  };
+
+  const filterOptions = cards.filter((card) => card?.weather === weatherType());
 
   return (
     <main className="main">
@@ -35,7 +39,7 @@ export function Main({ isLoggedIn, weatherData, cards, onCardClick }) {
               </p>
             ) : (
               <p className="main__description">
-                Today is {Math.round(((temperature - 32) * 5) / 9)}°
+                Today is {temperatureConvertToCelcius(temperature)}°
                 {currentTemperatureUnit} and it is {weatherType()} / You may
                 want to wear:
               </p>
@@ -43,16 +47,14 @@ export function Main({ isLoggedIn, weatherData, cards, onCardClick }) {
           </div>
         </div>
         <ul className="main__items">
-          {cards
-            .filter((card) => card.weather === weatherType())
-            .map((filteredCard) => (
-              <ItemCard
-                isLoggedIn={isLoggedIn}
-                key={filteredCard.id}
-                card={filteredCard}
-                onCardClick={onCardClick}
-              />
-            ))}
+          {filterOptions.map((filteredCard) => (
+            <ItemCard
+              isLoggedIn={isLoggedIn}
+              key={filteredCard._id}
+              card={filteredCard}
+              onCardClick={onCardClick}
+            />
+          ))}
         </ul>
       </section>
     </main>

@@ -17,7 +17,7 @@ export function ClothesSection({ cards, handleAddClick, onCardClick }) {
       <div className="clothes__section-container">
         <ul className="clothes__section-items">
           {cards.map((card) => (
-            <ItemCard key={card.id} card={card} onCardClick={onCardClick} />
+            <ItemCard key={card._id} card={card} onCardClick={onCardClick} />
           ))}
         </ul>
       </div>

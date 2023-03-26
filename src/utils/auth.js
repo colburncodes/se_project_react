@@ -37,12 +37,12 @@ export const login = async (email, password) => {
     .catch((error) => console.error(error.message));
 };
 
-export const getUser = async (token) => {
-  return await fetch(`${BASE_URL}/users/me`, {
+export const getUser = () => {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${localStorage.getItem(token)}`,
+      authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
     .then((data) => {

@@ -110,7 +110,12 @@ function App() {
     }
   }
 
-  function handleAddItemSubmit(name, imageUrl, weather) {
+  function handleSignOut() {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+  }
+
+  async function handleAddItemSubmit(name, imageUrl, weather) {
     setIsLoading(true);
     api
       .addItem({ name, imageUrl, weather })
@@ -124,10 +129,10 @@ function App() {
 
   function handleDeleteItemSubmit() {
     api
-      .deleteItem(selectedCard.id)
+      .deleteItem(selectedCard._id)
       .then(() => {
         setClothingItems([
-          ...clothingitems.filter((item) => item.id !== selectedCard.id),
+          ...clothingitems.filter((item) => item._id !== selectedCard._id),
         ]);
         setSelectedCard({});
         closeModal();
@@ -143,7 +148,7 @@ function App() {
       auth
         .getUser(token)
         .then((res) => {
-          if (res) {
+          if (res.ok) {
             console.log(res);
             setCurrentUser(res);
           }
@@ -165,6 +170,7 @@ function App() {
             handleAddClick={handleAddClick}
             handleLoginClick={handleLoginClick}
             handleRegisterClick={handleRegisterClick}
+            handleSignOut={handleSignOut}
           />
           <Switch>
             <Route exact path="/">

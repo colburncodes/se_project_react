@@ -23,7 +23,7 @@
   line-height: 20px;
   flex-direction: row;
   justify-content: center;
-  padding: 2px 12px;
+  padding: 24px 12px;
   align-items: center;
   display: flex;
   border-radius: 4px;
@@ -34,9 +34,10 @@
   width: 323px;
   height: 326px;
   border-radius: 19px;
-  z-index: 0;
   object-fit: cover;
   cursor: pointer;
+  margin-top: -20px;
+  margin-left: -1px;
 }
 
 .card__heart-icon {
