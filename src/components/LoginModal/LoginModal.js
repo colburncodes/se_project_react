@@ -8,24 +8,24 @@ export const LoginModal = ({
   isOpen,
   isLoading,
   onCloseModal,
-  handleUserLogin,
-  handleToggleModal,
+  onLogin,
+  onToggleModal,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  function handleEmailChange(e) {
+  function handleEmail(e) {
     setEmail(e.target.value);
   }
 
-  function handlePasswordChange(e) {
+  function handlePassword(e) {
     setPassword(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleUserLogin(email, password);
+    onLogin(email, password);
     history.push("/profile");
   }
 
@@ -53,7 +53,7 @@ export const LoginModal = ({
         placeholder="Email"
         minLength="1"
         maxLength="30"
-        onChange={handleEmailChange}
+        onChange={handleEmail}
         required
       />
       <span className="modal__input-error email-error"></span>
@@ -65,17 +65,13 @@ export const LoginModal = ({
         name="password"
         value={password}
         placeholder="Password"
-        onChange={handlePasswordChange}
+        onChange={handlePassword}
         required
       />
       <span className="modal__input-error password-error"></span>
       <p className="modal__auth-text-login">
         or{" "}
-        <Link
-          className="modal__form-link"
-          to="/signup"
-          onClick={handleToggleModal}
-        >
+        <Link className="modal__form-link" to="/" onClick={onToggleModal}>
           Register
         </Link>
       </p>

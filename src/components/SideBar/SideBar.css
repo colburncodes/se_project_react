@@ -33,3 +33,39 @@
   top: 20px;
   margin-left: 20px;
 }
+
+.sidebar__edit-profile {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 37px;
+  width: 206px;
+  left: 25px;
+  height: 24px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.sidebar__sign-out {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 51px;
+  left: 25px;
+  height: 24px;
+  width: 145px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}

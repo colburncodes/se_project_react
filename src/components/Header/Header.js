@@ -10,10 +10,9 @@ export function Header({
   isLoggedIn,
   currentUser,
   weatherData,
-  handleAddClick,
-  handleLoginClick,
-  handleRegisterClick,
-  handleSignOut,
+  onAddClick,
+  onLoginClick,
+  onRegisterClick,
 }) {
   if (!weatherData) return null;
   const username = "Andrew Clark";
@@ -35,14 +34,14 @@ export function Header({
             <button
               className="header__register"
               type="button"
-              onClick={handleRegisterClick}
+              onClick={onRegisterClick}
             >
               Sign Up
             </button>
             <button
               className="header__login"
               type="button"
-              onClick={handleLoginClick}
+              onClick={onLoginClick}
             >
               Log in
             </button>
@@ -52,11 +51,11 @@ export function Header({
         <ToggleSwitch />
 
         {isLoggedIn ? (
-          <>
+          <div className="header__info-user">
             <button
               className="header__add-clothes"
               type="button"
-              onClick={handleAddClick}
+              onClick={onAddClick}
             >
               + Add clothes
             </button>
@@ -64,15 +63,7 @@ export function Header({
             <Link to={"/profile"}>
               <img className="header__avatar" alt="Avatar" src={avatarPath} />
             </Link>
-
-            <button
-              className="header__add-clothes"
-              type="button"
-              onClick={handleSignOut}
-            >
-              Log out
-            </button>
-          </>
+          </div>
         ) : (
           <div></div>
         )}
