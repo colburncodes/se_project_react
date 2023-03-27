@@ -3,12 +3,18 @@ import { ClothesSection } from "../ClothesSection/ClothesSection";
 import { SideBar } from "../SideBar/SideBar";
 import "./Profile.css";
 
-export function Profile({ clothes, handleAddClick, onCardClick }) {
+export function Profile({
+  cards,
+  handleAddClick,
+  onCardClick,
+  onProfileClick,
+  onSignOut,
+}) {
   return (
     <div className="profile">
-      <SideBar />
+      <SideBar onProfileClick={onProfileClick} onSignOut={onSignOut} />
       <ClothesSection
-        cards={clothes}
+        cards={cards}
         handleAddClick={handleAddClick}
         onCardClick={onCardClick}
       />

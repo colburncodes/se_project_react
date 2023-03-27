@@ -8,7 +8,7 @@ export const RegisterModal = ({
   isOpen,
   isLoading,
   onCloseModal,
-  handleRegistration,
+  onRegistration,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +38,7 @@ export const RegisterModal = ({
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleRegistration({ name, avatar, email, password });
+    onRegistration({ name, avatar, email, password });
     history.push("/profile");
   }
 
@@ -114,7 +114,7 @@ export const RegisterModal = ({
       <span className="modal__input-error avatar-url-error"></span>
       <p className="modal__auth-text">
         or{" "}
-        <Link className="modal__form-link" to="/signin">
+        <Link className="modal__form-link" to="/">
           Login
         </Link>
       </p>

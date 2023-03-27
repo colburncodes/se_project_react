@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { weather } from "../utils/weatherApi";
 import { api } from "../utils/api";
 import * as auth from "../utils/auth";
@@ -20,6 +20,7 @@ import {
 } from "./index";
 
 import "./App.css";
+import { EditProfileModal } from "./EditProfileModal/EditProfileModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -32,14 +33,18 @@ function App() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const history = useHistory();
 
   const handleLoginClick = () => setIsLoginModalOpen(true);
 
   const handleAddClick = () => setIsAddItemModalOpen(true);
 
   const handleRegisterClick = () => setIsRegisterModalOpen(true);
+
+  const handleProfileClick = () => setIsProfileModalOpen(true);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -62,6 +67,7 @@ function App() {
     setIsLoginModalOpen(false);
     setIsAddItemModalOpen(false);
     setIsRegisterModalOpen(false);
+    setIsProfileModalOpen(false);
   };
 
   useEffect(() => {
@@ -83,6 +89,23 @@ function App() {
       })
       .catch((error) => console.error(error));
   }, []);
+
+  // check for a JWT when mounting `App`
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(true);
+      auth
+        .getUser(token)
+        .then((res) => {
+          if (res.ok) {
+            console.log(res);
+            setCurrentUser(res.name);
+          }
+        })
+        .catch((err) => console.error(err.message));
+    }
+  }, [isLoggedIn]);
 
   async function handleRegistration({ name, avatar, email, password }) {
     setIsLoading(true);
@@ -113,6 +136,7 @@ function App() {
   function handleSignOut() {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    history.push("/");
   }
 
   async function handleAddItemSubmit(name, imageUrl, weather) {
@@ -125,6 +149,10 @@ function App() {
       })
       .catch((error) => console.error(error))
       .finally(() => setIsLoading(false));
+  }
+
+  function handleEditProfile() {
+    console.log("Edit Profile");
   }
 
   function handleDeleteItemSubmit() {
@@ -140,23 +168,6 @@ function App() {
       .catch((error) => console.error(error));
   }
 
-  // check for a JWT when mounting `App`
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      setIsLoggedIn(true);
-      auth
-        .getUser(token)
-        .then((res) => {
-          if (res.ok) {
-            console.log(res);
-            setCurrentUser(res);
-          }
-        })
-        .catch((err) => console.error(err.message));
-    }
-  }, [isLoggedIn]);
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -167,10 +178,9 @@ function App() {
             isLoggedIn={isLoggedIn}
             weatherData={weatherData}
             currentUser={currentUser}
-            handleAddClick={handleAddClick}
-            handleLoginClick={handleLoginClick}
-            handleRegisterClick={handleRegisterClick}
-            handleSignOut={handleSignOut}
+            onAddClick={handleAddClick}
+            onLoginClick={handleLoginClick}
+            onRegisterClick={handleRegisterClick}
           />
           <Switch>
             <Route exact path="/">
@@ -189,14 +199,13 @@ function App() {
               <Profile
                 isLoggedIn={isLoggedIn}
                 currentUser={currentUser}
-                clothes={clothingitems}
+                cards={clothingitems}
                 handleAddClick={handleAddClick}
                 onCardClick={handleCardClick}
+                onProfileClick={handleProfileClick}
+                onSignOut={handleSignOut}
               />
             </ProtectedRoute>
-            <Route>
-              {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
-            </Route>
           </Switch>
           <Footer />
 
@@ -206,7 +215,7 @@ function App() {
               isOpen={isRegisterModalOpen}
               isLoading={isLoading}
               onCloseModal={closeModal}
-              handleRegistration={handleRegistration}
+              onRegistration={handleRegistration}
             />
           )}
 
@@ -216,8 +225,8 @@ function App() {
               isOpen={isLoginModalOpen}
               isLoading={isLoading}
               onCloseModal={closeModal}
-              handleUserLogin={handleUserLogin}
-              handleToggleModal={handleToggleModal}
+              onLogin={handleUserLogin}
+              onToggleModal={handleToggleModal}
             />
           )}
 
@@ -231,8 +240,19 @@ function App() {
             />
           )}
 
+          {isProfileModalOpen && (
+            <EditProfileModal
+              name="edit"
+              isLoading={isLoading}
+              isOpen={isProfileModalOpen}
+              onCloseModal={closeModal}
+              onEditProfile={handleEditProfile}
+            />
+          )}
+
           {isImagePreviewOpen && (
             <ItemModal
+              isLoggedIn={isLoggedIn}
               isOpen={isImagePreviewOpen}
               card={selectedCard}
               onCloseModal={closeModal}

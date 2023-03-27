@@ -16,7 +16,19 @@
 .header__info {
   display: flex;
   align-items: flex-end;
-  margin-right: 328px;
+  margin-right: 318px;
+}
+
+.header__info-user {
+  display: flex;
+  align-items: flex-end;
+  margin-right: -124px;
+}
+
+.header__info-login {
+  display: flex;
+  align-items: flex-end;
+  margin-right: 100px;
 }
 
 .header__logo {
@@ -97,7 +109,7 @@
   font-size: 20px;
   line-height: 25px;
   position: relative;
-  top: 20px;
+  top: 21px;
   margin-left: 20px;
 }
 
