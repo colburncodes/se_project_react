@@ -51,13 +51,14 @@ export const getUser = () => {
     .catch((error) => console.error(error.message));
 };
 
-export const updateUser = async (name, avatar, about) => {
+export const updateUser = async (name, avatar) => {
   return await fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-    body: JSON.stringify({ name, avatar, about }),
+    body: JSON.stringify({ name, avatar }),
   })
     .then((res) => res.json())
     .then((data) => {

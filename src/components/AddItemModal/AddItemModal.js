@@ -12,15 +12,15 @@ export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal 
     setWeather("");
   }, [isOpen]);
 
-  function handleNameChange(e) {
+  function handleName(e) {
     setItemName(e.target.value);
   }
 
-  function handleImageChange(e) {
+  function handleImage(e) {
     setImageUrl(e.target.value);
   }
 
-  function handleWeatherChange(e) {
+  function handleWeather(e) {
     setWeather(e.target.value);
   }
 
@@ -49,7 +49,7 @@ export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal 
         placeholder="Name"
         minLength="1"
         maxLength="30"
-        onChange={handleNameChange}
+        onChange={handleName}
         required
       />
       <span className="modal__input-error garment-name-error"></span>
@@ -62,7 +62,7 @@ export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal 
         value={imageUrl}
         placeholder="Image URL"
         pattern="https://.*"
-        onChange={handleImageChange}
+        onChange={handleImage}
         required
       />
       <span className="modal__input-error garment-url-error"></span>
@@ -75,7 +75,7 @@ export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal 
             name="weatherType"
             value="hot"
             checked={weather === "hot"}
-            onChange={handleWeatherChange}
+            onChange={handleWeather}
           />
           <label className="modal__label_radio" htmlFor="choiceHot">
             Hot
@@ -88,7 +88,7 @@ export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal 
             name="weatherType"
             value="warm"
             checked={weather === "warm"}
-            onChange={handleWeatherChange}
+            onChange={handleWeather}
           />
           <label className="modal__label_radio" htmlFor="choiceWarm">
             Warm
@@ -101,7 +101,7 @@ export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal 
             name="weatherType"
             value="cold"
             checked={weather === "cold"}
-            onChange={handleWeatherChange}
+            onChange={handleWeather}
           />
           <label className="modal__label_radio" htmlFor="choiceCold">
             Cold
