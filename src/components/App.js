@@ -34,7 +34,7 @@ function App() {
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const history = useHistory();
 
@@ -151,8 +151,15 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  function handleEditProfile() {
-    console.log("Edit Profile");
+  function handleEditProfile(name, avatar) {
+    setIsLoading(true);
+    auth
+      .updateUser(name, avatar)
+      .then((user) => {
+        setCurrentUser(user);
+        closeModal();
+      })
+      .catch((err) => console.error(err));
   }
 
   function handleDeleteItemSubmit() {
