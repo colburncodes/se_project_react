@@ -16,11 +16,11 @@ import {
   RegisterModal,
   LoginModal,
   AddItemModal,
+  EditProfileModal,
   ItemModal,
 } from "./index";
 
 import "./App.css";
-import { EditProfileModal } from "./EditProfileModal/EditProfileModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});

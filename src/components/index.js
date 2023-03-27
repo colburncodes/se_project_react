@@ -6,4 +6,5 @@ export { ItemModal } from "./ItemModal/ItemModal";
 export { AddItemModal } from "./AddItemModal/AddItemModal";
 export { LoginModal } from "./LoginModal/LoginModal";
 export { RegisterModal } from "./RegisterModal/RegisterModal";
+export { EditProfileModal } from "./EditProfileModal/EditProfileModal";
 export { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
