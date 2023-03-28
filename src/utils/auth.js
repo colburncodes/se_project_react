@@ -38,17 +38,18 @@ export const login = async (email, password) => {
 };
 
 export const getUser = () => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  })
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => console.error(error.message));
+ return fetch(`${BASE_URL}/users/me`, {
+   method: "GET",
+   headers: {
+     "Content-Type": "application/json",
+     authorization: `Bearer ${localStorage.getItem("token")}`,
+   },
+ })
+   .then((res) => res.json())
+   .then((data) => {
+     return data;
+   })
+   .catch((error) => console.error(error.message));
 };
 
 export const updateUser = async (name, avatar) => {

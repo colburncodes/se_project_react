@@ -27,7 +27,7 @@ export function EditProfileModal({
   }
   return (
     <ModalWithForm
-      title="Change profile data"
+      title="Change profile"
       buttonText={isLoading ? "Saving..." : "Save"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
