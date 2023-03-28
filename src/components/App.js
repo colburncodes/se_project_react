@@ -70,49 +70,12 @@ function App() {
     setIsProfileModalOpen(false);
   };
 
-  useEffect(() => {
-    const closeByEscape = (e) => {
-      if (e.key === "Escape") {
-        closeModal();
-      }
-    };
-
-    document.addEventListener("keydown", closeByEscape);
-    return () => document.removeEventListener("keydown", closeByEscape);
-  }, []);
-
-  useEffect(() => {
-    Promise.all([weather.getWeatherData(location, API_KEY), api.getItems()])
-      .then(([weatherInfo, clothing]) => {
-        setWeatherData(weatherInfo);
-        setClothingItems(clothing);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
-  // check for a JWT when mounting `App`
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      setIsLoggedIn(true);
-      auth
-        .getUser(token)
-        .then((res) => {
-          if (res.ok) {
-            console.log(res);
-            setCurrentUser(res.name);
-          }
-        })
-        .catch((err) => console.error(err.message));
-    }
-  }, [isLoggedIn]);
-
   async function handleRegistration({ name, avatar, email, password }) {
     setIsLoading(true);
     try {
       const res = await auth.register(name, avatar, email, password);
       setIsLoggedIn(true);
-      setCurrentUser(res);
+      setCurrentUser({ res });
       closeModal();
     } catch (err) {
       return console.error(err);
@@ -125,7 +88,7 @@ function App() {
       const res = await auth.login(email, password);
       if (res) {
         setIsLoggedIn(true);
-        setCurrentUser(res.token);
+        setCurrentUser({ user: res.token });
         closeModal();
       }
     } finally {
@@ -133,7 +96,8 @@ function App() {
     }
   }
 
-  function handleSignOut() {
+  function handleSignOut(e) {
+    e.preventDefault();
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     history.push("/");
@@ -175,6 +139,40 @@ function App() {
       .catch((error) => console.error(error));
   }
 
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+    return () => document.removeEventListener("keydown", closeByEscape);
+  }, []);
+
+  useEffect(() => {
+    Promise.all([weather.getWeatherData(location, API_KEY), api.getItems()])
+      .then(([weatherInfo, clothing]) => {
+        setWeatherData(weatherInfo);
+        setClothingItems(clothing);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  // check for a JWT when mounting `App`
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(true);
+      auth
+        .getUser(token)
+        .then((res) => {
+          setCurrentUser(res.data);
+        })
+        .catch((err) => console.error(err.message));
+    }
+  }, [isLoggedIn]);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -183,8 +181,8 @@ function App() {
         >
           <Header
             isLoggedIn={isLoggedIn}
-            weatherData={weatherData}
             currentUser={currentUser}
+            weatherData={weatherData}
             onAddClick={handleAddClick}
             onLoginClick={handleLoginClick}
             onRegisterClick={handleRegisterClick}

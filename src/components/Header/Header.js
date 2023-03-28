@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logoPath from "../../images/wtwr.svg";
 import avatarPath from "../../images/avatar.svg";
 import { currentDate } from "../../utils/constants";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 import "./Header.css";
 
 export function Header({
   isLoggedIn,
-  currentUser,
   weatherData,
   onAddClick,
   onLoginClick,
   onRegisterClick,
 }) {
+  const currentUser = useContext(CurrentUserContext);
   if (!weatherData) return null;
-  const username = "Andrew Clark";
   return (
     <header className="header">
       <div className="header__container">
@@ -59,7 +59,7 @@ export function Header({
             >
               + Add clothes
             </button>
-            <p className="header__username">{username}</p>
+            <p className="header__username">{currentUser.name}</p>
             <Link to={"/profile"}>
               <img className="header__avatar" alt="Avatar" src={avatarPath} />
             </Link>

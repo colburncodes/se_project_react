@@ -5,6 +5,7 @@ import "./Profile.css";
 
 export function Profile({
   cards,
+  currentUser,
   handleAddClick,
   onCardClick,
   onProfileClick,
@@ -12,7 +13,11 @@ export function Profile({
 }) {
   return (
     <div className="profile">
-      <SideBar onProfileClick={onProfileClick} onSignOut={onSignOut} />
+      <SideBar
+        currentUser={currentUser}
+        onProfileClick={onProfileClick}
+        onSignOut={onSignOut}
+      />
       <ClothesSection
         cards={cards}
         handleAddClick={handleAddClick}
