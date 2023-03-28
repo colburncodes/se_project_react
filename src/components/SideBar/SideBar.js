@@ -3,8 +3,6 @@ import "./SideBar.css";
 import avatarPath from "../../images/avatar.svg";
 
 export function SideBar({ currentUser, onProfileClick, onSignOut }) {
-  const userName = "Andrew Clark";
-
   return (
     <div className="sidebar">
       <div className="sidebar__container">

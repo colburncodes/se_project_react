@@ -1,20 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import logoPath from "../../images/wtwr.svg";
 import avatarPath from "../../images/avatar.svg";
 import { currentDate } from "../../utils/constants";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
-import { CurrentUserContext } from "../../context/CurrentUserContext";
 import "./Header.css";
 
 export function Header({
   isLoggedIn,
+  currentUser,
   weatherData,
   onAddClick,
   onLoginClick,
   onRegisterClick,
 }) {
-  const currentUser = useContext(CurrentUserContext);
   if (!weatherData) return null;
   return (
     <header className="header">

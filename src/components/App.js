@@ -258,6 +258,7 @@ function App() {
           {isImagePreviewOpen && (
             <ItemModal
               isLoggedIn={isLoggedIn}
+              currentUser={currentUser}
               isOpen={isImagePreviewOpen}
               card={selectedCard}
               onCloseModal={closeModal}
