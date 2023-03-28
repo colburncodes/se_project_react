@@ -4,7 +4,13 @@ import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import "./Main.css";
 
-export function Main({ isLoggedIn, weatherData, cards, onCardClick }) {
+export function Main({
+  isLoggedIn,
+  weatherData,
+  cards,
+  onCardClick,
+  handleLikeClick,
+}) {
   const { currentTemperatureUnit } = React.useContext(
     CurrentTemperatureUnitContext
   );
@@ -53,6 +59,7 @@ export function Main({ isLoggedIn, weatherData, cards, onCardClick }) {
               key={filteredCard._id}
               card={filteredCard}
               onCardClick={onCardClick}
+              handleLikeClick={handleLikeClick}
             />
           ))}
         </ul>

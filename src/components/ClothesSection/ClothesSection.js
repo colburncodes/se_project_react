@@ -1,7 +1,7 @@
 import React from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
-export function ClothesSection({ cards, handleAddClick, onCardClick }) {
+export function ClothesSection({ cards, isLoggedIn, onAddClick, onCardClick }) {
   return (
     <div className="clothes__section">
       <div className="clothes__section-info">
@@ -9,7 +9,7 @@ export function ClothesSection({ cards, handleAddClick, onCardClick }) {
         <button
           className="clothes__button-add"
           type="button"
-          onClick={handleAddClick}
+          onClick={onAddClick}
         >
           + Add new
         </button>
@@ -17,7 +17,12 @@ export function ClothesSection({ cards, handleAddClick, onCardClick }) {
       <div className="clothes__section-container">
         <ul className="clothes__section-items">
           {cards.map((card) => (
-            <ItemCard key={card._id} card={card} onCardClick={onCardClick} />
+            <ItemCard
+              isLoggedIn={isLoggedIn}
+              key={card._id}
+              card={card}
+              onCardClick={onCardClick}
+            />
           ))}
         </ul>
       </div>
