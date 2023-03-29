@@ -45,8 +45,32 @@
   position: relative;
   left: 229px;
   top: 20px;
+  width: 20px;
+  height: 20px;
+  background-image: url(../../images/unlike.png);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  margin-left: 10px;
+  transition: opacity 0.2s ease-in-out;
 }
 
-.card__heart-icon:hover {
+.card__like-btn {
+  background-image: url(../../images/liked.png);  
+  background-color: transparent;
+  background-repeat: no-repeat;  
+  width: 20px;
+  height: 20px;
+  border: none;
+  margin-left: 10px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.card__like-btn:hover, .card__heart-icon:hover {
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.card__like-btn_hidden {
+  display: none;
 }

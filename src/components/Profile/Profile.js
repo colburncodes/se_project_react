@@ -5,23 +5,22 @@ import "./Profile.css";
 
 export function Profile({
   cards,
-  currentUser,
-  handleAddClick,
+  isLoggedIn,
+  onAddClick,
   onCardClick,
   onProfileClick,
   onSignOut,
+  handleLikeClick,
 }) {
   return (
     <div className="profile">
-      <SideBar
-        currentUser={currentUser}
-        onProfileClick={onProfileClick}
-        onSignOut={onSignOut}
-      />
+      <SideBar onProfileClick={onProfileClick} onSignOut={onSignOut} />
       <ClothesSection
         cards={cards}
-        handleAddClick={handleAddClick}
+        isLoggedIn={isLoggedIn}
+        onAddClick={onAddClick}
         onCardClick={onCardClick}
+        handleLikeClick={handleLikeClick}
       />
     </div>
   );

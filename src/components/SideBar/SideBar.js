@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./SideBar.css";
 import avatarPath from "../../images/avatar.svg";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
-export function SideBar({ currentUser, onProfileClick, onSignOut }) {
+export function SideBar({ onProfileClick, onSignOut }) {
+  const currentUser = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
       <div className="sidebar__container">

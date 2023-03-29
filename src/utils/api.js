@@ -50,9 +50,19 @@ class Api {
     });
   };
 
-  addCardLike = async (_id) => {
-    return await this._request(`${this._baseUrl}/${_id}/likes`, {
+  addCardLike = async (id) => {
+    return await this._request(`${this._baseUrl}/items/${id}/likes`, {
       method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+  };
+
+  removeCardLike = async (id) => {
+    return await this._request(`${this._baseUrl}/items/${id}/likes`, {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("token")}`,

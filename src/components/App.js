@@ -29,6 +29,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
@@ -126,6 +127,26 @@ function App() {
       .catch((err) => console.error(err));
   }
 
+  function handleLikeClick(id, isLiked) {
+    isLiked
+      ? api
+          .addCardLike(id)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.error(err))
+      : api
+          .removeCardLike(id)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.error(err));
+  }
+
   function handleDeleteItemSubmit() {
     api
       .deleteItem(selectedCard._id)
@@ -181,7 +202,6 @@ function App() {
         >
           <Header
             isLoggedIn={isLoggedIn}
-            currentUser={currentUser}
             weatherData={weatherData}
             onAddClick={handleAddClick}
             onLoginClick={handleLoginClick}
@@ -194,6 +214,7 @@ function App() {
                 weatherData={weatherData}
                 cards={clothingitems}
                 onCardClick={handleCardClick}
+                handleLikeClick={handleLikeClick}
               />
             </Route>
             <ProtectedRoute
@@ -203,12 +224,12 @@ function App() {
             >
               <Profile
                 isLoggedIn={isLoggedIn}
-                currentUser={currentUser}
                 cards={clothingitems}
-                handleAddClick={handleAddClick}
+                onAddClick={handleAddClick}
                 onCardClick={handleCardClick}
                 onProfileClick={handleProfileClick}
                 onSignOut={handleSignOut}
+                handleLikeClick={handleLikeClick}
               />
             </ProtectedRoute>
           </Switch>
