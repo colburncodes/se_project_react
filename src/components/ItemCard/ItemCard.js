@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import likeicon from "../../images/heart.svg";
 import "./ItemCard.css";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
-export function ItemCard({ isLoggedIn, card, onCardClick, handleLikeClick }) {
+export function ItemCard({ card, onCardClick, handleLikeClick }) {
   const currentUser = useContext(CurrentUserContext);
-  const isLiked = card.likes.some((user) => user._id === currentUser._id);
+  const isLiked = card.likes.some((user) => user === currentUser._id);
 
   const itemLikeButtonClassName = `card__heart-icon ${
-    isLiked ? "card__heart-icon" : "card__like-btn"
+    isLiked ? "card__heart-icon" : "card__like-btn" //"card__like-btn"
   }`;
   return (
     <div className="card" onClick={() => onCardClick(card)}>
@@ -18,7 +18,9 @@ export function ItemCard({ isLoggedIn, card, onCardClick, handleLikeClick }) {
             className={itemLikeButtonClassName}
             src={likeicon}
             alt={card.name}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
+              console.log({ isLiked: isLiked });
               handleLikeClick(card._id, !isLiked);
             }}
           />
