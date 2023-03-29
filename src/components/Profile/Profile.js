@@ -10,6 +10,7 @@ export function Profile({
   onCardClick,
   onProfileClick,
   onSignOut,
+  handleLikeClick,
 }) {
   return (
     <div className="profile">
@@ -19,6 +20,7 @@ export function Profile({
         isLoggedIn={isLoggedIn}
         onAddClick={onAddClick}
         onCardClick={onCardClick}
+        handleLikeClick={handleLikeClick}
       />
     </div>
   );

@@ -4,7 +4,6 @@ import "./ItemCard.css";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 export function ItemCard({ isLoggedIn, card, onCardClick, handleLikeClick }) {
   const currentUser = useContext(CurrentUserContext);
-
   const isLiked = card.likes.some((user) => user._id === currentUser._id);
 
   const itemLikeButtonClassName = `card__heart-icon ${
@@ -17,10 +16,10 @@ export function ItemCard({ isLoggedIn, card, onCardClick, handleLikeClick }) {
           <h2 className="card__title">{card.name}</h2>
           <img
             className={itemLikeButtonClassName}
-            alt={card.name}
             src={likeicon}
+            alt={card.name}
             onClick={() => {
-              handleLikeClick(card._id, isLiked);
+              handleLikeClick(card._id, !isLiked);
             }}
           />
         </div>

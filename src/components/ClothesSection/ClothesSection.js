@@ -1,7 +1,13 @@
 import React from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
-export function ClothesSection({ cards, isLoggedIn, onAddClick, onCardClick }) {
+export function ClothesSection({
+  cards,
+  isLoggedIn,
+  onAddClick,
+  onCardClick,
+  handleLikeClick,
+}) {
   return (
     <div className="clothes__section">
       <div className="clothes__section-info">
@@ -22,6 +28,7 @@ export function ClothesSection({ cards, isLoggedIn, onAddClick, onCardClick }) {
               key={card._id}
               card={card}
               onCardClick={onCardClick}
+              handleLikeClick={handleLikeClick}
             />
           ))}
         </ul>

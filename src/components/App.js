@@ -229,6 +229,7 @@ function App() {
                 onCardClick={handleCardClick}
                 onProfileClick={handleProfileClick}
                 onSignOut={handleSignOut}
+                handleLikeClick={handleLikeClick}
               />
             </ProtectedRoute>
           </Switch>
