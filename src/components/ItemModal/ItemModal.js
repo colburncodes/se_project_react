@@ -1,7 +1,13 @@
 import React from "react";
 import "./ItemModal.css";
 
-export function ItemModal({ card, currentUser, onCloseModal, onDelete }) {
+export function ItemModal({
+  isLoggedIn,
+  card,
+  currentUser,
+  onCloseModal,
+  onDelete,
+}) {
   const isOwner = card.owner._id === currentUser._id;
   const itemDeleteButtonClassName = `modal__delete-item ${
     isOwner ? "modal__delete-item" : "modal__delete-hidden"
@@ -23,13 +29,19 @@ export function ItemModal({ card, currentUser, onCloseModal, onDelete }) {
           />
           <p className="modal__title-preview">{card?.name}</p>
           <p className="modal__description">Weather: {card?.weather}</p>
-          <button
-            onClick={onDelete}
-            type="button"
-            className={itemDeleteButtonClassName}
-          >
-            Delete item
-          </button>
+          {isLoggedIn ? (
+            <button
+              onClick={onDelete}
+              type="button"
+              className={itemDeleteButtonClassName}
+            >
+              Delete item
+            </button>
+          ) : (
+            <button type="button" className={itemDeleteButtonClassName}>
+              Delete item
+            </button>
+          )}
         </div>
       </div>
     </div>
