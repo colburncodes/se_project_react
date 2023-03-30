@@ -62,7 +62,11 @@ export function Header({
             </button>
             <p className="header__username">{currentUser.name}</p>
             <Link to={"/profile"}>
-              <img className="header__avatar" alt="Avatar" src={avatarPath} />
+              <img
+                className="header__avatar"
+                alt="Avatar"
+                src={currentUser.avatar}
+              />
             </Link>
           </div>
         ) : (
