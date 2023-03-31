@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 import { useHistory } from "react-router-dom";
 
 export function EditProfileModal({
   isOpen,
   isLoading,
+  currentUser,
   onEditProfile,
   onCloseModal,
 }) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const history = useHistory();
+
+  useEffect(() => {
+    setName(currentUser.name);
+    setAvatar(currentUser.avatar);
+  }, [currentUser]);
 
   function handleName(e) {
     setName(e.target.value);

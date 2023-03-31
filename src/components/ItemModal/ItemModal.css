@@ -19,6 +19,9 @@
 }
 
 .modal__image-preview {
+  display: flex;
+  position: relative;
+  left: -1px;
   width: 422px;
   height: 460px;
   object-fit: cover;
@@ -74,6 +77,7 @@
   justify-content: center;
   border: 0;
   cursor: pointer;
+  z-index: 1;
   background: transparent url(../../images/modal-close.svg) center no-repeat;
   transform: rotate(-90deg);
 }
@@ -99,6 +103,10 @@
   left: 303px;
   margin: 0;
   text-align: end;
+}
+
+.modal__delete-hidden {
+  display: none;
 }
 
 

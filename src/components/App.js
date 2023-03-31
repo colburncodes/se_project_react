@@ -79,6 +79,8 @@ function App() {
       closeModal();
     } catch (err) {
       return console.error(err);
+    } finally {
+      return setIsLoading(false);
     }
   }
 
@@ -91,6 +93,8 @@ function App() {
         setCurrentUser({ user: res.token });
         closeModal();
       }
+    } catch (err) {
+      return console.error(err);
     } finally {
       return setIsLoading(false);
     }
@@ -123,7 +127,8 @@ function App() {
         setCurrentUser(user);
         closeModal();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   }
 
   function handleLikeClick(id, isLiked) {
@@ -270,6 +275,7 @@ function App() {
           {isProfileModalOpen && (
             <EditProfileModal
               name="edit"
+              currentUser={currentUser}
               isLoading={isLoading}
               isOpen={isProfileModalOpen}
               onCloseModal={closeModal}
