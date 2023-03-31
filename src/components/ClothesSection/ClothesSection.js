@@ -22,15 +22,17 @@ export function ClothesSection({
       </div>
       <div className="clothes__section-container">
         <ul className="clothes__section-items">
-          {cards.map((card) => (
-            <ItemCard
-              isLoggedIn={isLoggedIn}
-              key={card._id}
-              card={card}
-              onCardClick={onCardClick}
-              handleLikeClick={handleLikeClick}
-            />
-          ))}
+          {cards.map((card) => {
+            return (
+              <ItemCard
+                isLoggedIn={isLoggedIn}
+                key={card._id}
+                card={card}
+                onCardClick={onCardClick}
+                handleLikeClick={handleLikeClick}
+              />
+            );
+          })}
         </ul>
       </div>
     </div>
