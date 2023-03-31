@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 
-export const AddItemModal = ({ name, isOpen, isLoading, onAddItem, onCloseModal }) => {
+export const AddItemModal = ({
+  name,
+  isOpen,
+  isLoading,
+  onAddItem,
+  onCloseModal,
+}) => {
   const [itemName, setItemName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
