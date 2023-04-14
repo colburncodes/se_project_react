@@ -53,12 +53,12 @@ export const getUser = () => {
   });
 };
 
-export const updateUser = async (name, avatar) => {
+export const updateUser = async (name, avatar, token) => {
   return handleRequest(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${localStorage.getItem("token")}`,
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
   }).then((data) => {
