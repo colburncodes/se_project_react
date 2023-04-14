@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import "./SideBar.css";
+import defaultImage from "../../images/avatar.svg";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 export function SideBar({ onProfileClick, onSignOut }) {
@@ -8,11 +9,16 @@ export function SideBar({ onProfileClick, onSignOut }) {
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        <img
-          className="sidebar__avatar"
-          alt="Avatar"
-          src={currentUser.avatar}
-        />
+        {currentUser === null ? (
+          <div>No image</div>
+        ) : (
+          <img
+            className="sidebar__avatar"
+            alt="User avatar"
+            src={currentUser?.avatar}
+          />
+        )}
+
         <p className="sidebar__username">{currentUser.name}</p>
       </div>
       <button

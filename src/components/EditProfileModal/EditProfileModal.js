@@ -9,14 +9,14 @@ export function EditProfileModal({
   onEditProfile,
   onCloseModal,
 }) {
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const history = useHistory();
-
   useEffect(() => {
     setName(currentUser.name);
     setAvatar(currentUser.avatar);
   }, [currentUser]);
+
+  const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
+  const history = useHistory();
 
   function handleName(e) {
     setName(e.target.value);
@@ -28,7 +28,7 @@ export function EditProfileModal({
 
   function handleSubmit(e) {
     e.preventDefault();
-    onEditProfile(name, avatar);
+    onEditProfile({ name, avatar, token: localStorage.getItem("token") });
     history.push("/profile");
   }
   return (

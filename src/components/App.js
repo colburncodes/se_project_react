@@ -119,12 +119,12 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  function handleEditProfile(name, avatar) {
+  function handleEditProfile({ name, avatar, token }) {
     setIsLoading(true);
     auth
-      .updateUser(name, avatar)
-      .then((user) => {
-        setCurrentUser(user);
+      .updateUser(name, avatar, token)
+      .then((res) => {
+        setCurrentUser(res);
         closeModal();
       })
       .catch((err) => console.error(err))
