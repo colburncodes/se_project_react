@@ -75,7 +75,8 @@ function App() {
     try {
       const res = await auth.register(name, avatar, email, password);
       setIsLoggedIn(true);
-      setCurrentUser({ res });
+      handleUserLogin(email, password);
+      setCurrentUser(res);
       closeModal();
     } catch (err) {
       return console.error(err);
@@ -90,7 +91,7 @@ function App() {
       const res = await auth.login(email, password);
       if (res) {
         setIsLoggedIn(true);
-        setCurrentUser({ user: res.token });
+        setCurrentUser(res.token);
         closeModal();
       }
     } catch (err) {
@@ -232,6 +233,7 @@ function App() {
               <Profile
                 isLoggedIn={isLoggedIn}
                 cards={clothingitems}
+                currentUser={currentUser}
                 onAddClick={handleAddClick}
                 onCardClick={handleCardClick}
                 onProfileClick={handleProfileClick}
