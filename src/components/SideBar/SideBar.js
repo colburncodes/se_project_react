@@ -1,24 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./SideBar.css";
-import defaultImage from "../../images/avatar.svg";
-import { CurrentUserContext } from "../../context/CurrentUserContext";
 
-export function SideBar({ onProfileClick, onSignOut }) {
-  const currentUser = useContext(CurrentUserContext);
-
+export function SideBar({ currentUser, onProfileClick, onSignOut }) {
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        {currentUser === null ? (
-          <div>No image</div>
-        ) : (
-          <img
-            className="sidebar__avatar"
-            alt="User avatar"
-            src={currentUser?.avatar}
-          />
-        )}
-
+        <img
+          className="sidebar__avatar"
+          alt="User avatar"
+          src={currentUser.avatar}
+        />
         <p className="sidebar__username">{currentUser.name}</p>
       </div>
       <button
