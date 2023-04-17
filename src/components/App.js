@@ -104,6 +104,7 @@ function App() {
     e.preventDefault();
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    setCurrentUser({});
     history.push("/");
   }
 
