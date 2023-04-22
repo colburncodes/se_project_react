@@ -1,6 +1,6 @@
 import "./RegisterModal.css";
 import React, { useState, useEffect, useMemo } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 
 export const RegisterModal = ({
@@ -9,6 +9,7 @@ export const RegisterModal = ({
   isLoading,
   onCloseModal,
   onRegistration,
+  onToggleModal,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -112,11 +113,8 @@ export const RegisterModal = ({
         required
       />
       <span className="modal__input-error avatar-url-error"></span>
-      <p className="modal__auth-text">
-        or{" "}
-        <Link className="modal__form-link" to="/">
-          Login
-        </Link>
+      <p className="modal__auth-text" onClick={onToggleModal}>
+        or Login
       </p>
     </ModalWithForm>
   );

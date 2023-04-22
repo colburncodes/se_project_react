@@ -69,11 +69,8 @@ export const LoginModal = ({
         required
       />
       <span className="modal__input-error password-error"></span>
-      <p className="modal__auth-text-login">
-        or{" "}
-        <Link className="modal__form-link" to="/" onClick={onToggleModal}>
-          Register
-        </Link>
+      <p className="modal__auth-text-login" onClick={onToggleModal}>
+        or Register
       </p>
     </ModalWithForm>
   );
