@@ -251,6 +251,7 @@ function App() {
               isLoading={isLoading}
               onCloseModal={closeModal}
               onRegistration={handleRegistration}
+              onToggleModal={handleToggleModal}
             />
           )}
 

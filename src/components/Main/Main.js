@@ -15,7 +15,8 @@ export function Main({
     CurrentTemperatureUnitContext
   );
 
-  let temperature = weatherData?.main?.temp;
+  let temperature = Math.round(weatherData?.main?.temp);
+
   const weatherType = () => {
     if (temperature >= 86) {
       return "hot";
