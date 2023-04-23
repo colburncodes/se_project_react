@@ -76,6 +76,6 @@ export default Api;
 export const api = new Api({
   baseUrl:
     process.env.NODE_ENV === "production"
-      ? "https://www.api.wtwr.mooo.com"
+      ? "https://api.wtwr.mooo.com"
       : "http://localhost:3001",
 });
