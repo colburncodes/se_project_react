@@ -20,7 +20,7 @@ WhatToWear is a frontend React application that uses OpenWeatherApi to fetch dat
 **Client:** React, React Router, Context API
 
 ### WTWR [Live Link](https://wtwr.mooo.com/)
-Log in to the default user with email "welcome@email.com" and password "password"
+Log in to the default user with email "welcome@user.com" and password "password"
 
 ## Run Locally
 
