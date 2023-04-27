@@ -18,7 +18,7 @@ export const RegisterModal = ({
   const history = useHistory();
 
   const isValid = useMemo(() => {
-    return password.length >= 8 && email.length >= 5;
+    return password.length >= 8 && email.length >= 8;
   }, [email, password]);
 
   function handleEmail(e) {
@@ -78,7 +78,7 @@ export const RegisterModal = ({
       <input
         id="password"
         className={`modal__input modal__input-password`}
-        type="text"
+        type="password"
         name="password"
         value={password}
         placeholder="Password"
