@@ -51,11 +51,10 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
-  const handleToggleModal = () => {
+  const handleToggleModal = () =>
     activeModal === "login"
       ? setActiveModal("register")
       : setActiveModal("login");
-  };
 
   const handleToggleSwitchChange = () =>
     currentTemperatureUnit === "F"
@@ -246,7 +245,7 @@ function App() {
 
           {isRegisterModalOpen && (
             <RegisterModal
-              form="register"
+              type="register"
               isOpen={isRegisterModalOpen}
               isLoading={isLoading}
               onCloseModal={closeModal}

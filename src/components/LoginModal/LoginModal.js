@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 import { Link, useHistory } from "react-router-dom";
 import "./LoginModal.css";
@@ -14,6 +14,10 @@ export const LoginModal = ({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+
+  const isValid = useMemo(() => {
+    return password.length >= 8 && email.length >= 8;
+  }, [email, password]);
 
   function handleEmail(e) {
     setEmail(e.target.value);
@@ -42,6 +46,7 @@ export const LoginModal = ({
       isOpen={isOpen}
       onSubmit={handleSubmit}
       closeModal={onCloseModal}
+      disabled={!isValid}
     >
       <label className="modal__label">Email</label>
       <input
@@ -61,7 +66,7 @@ export const LoginModal = ({
       <input
         id="password"
         className={`modal__input modal__input-password`}
-        type="text"
+        type="password"
         name="password"
         value={password}
         placeholder="Password"
