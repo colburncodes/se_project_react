@@ -27,29 +27,7 @@ export function Header({
         </p>
       </div>
       <div className="header__info">
-        {isLoggedIn ? (
-          <div></div>
-        ) : (
-          <>
-            <button
-              className="header__register"
-              type="button"
-              onClick={onRegisterClick}
-            >
-              Sign Up
-            </button>
-            <button
-              className="header__login"
-              type="button"
-              onClick={onLoginClick}
-            >
-              Log in
-            </button>
-          </>
-        )}
-
         <ToggleSwitch />
-
         {isLoggedIn ? (
           <div className="header__info-user">
             <button
@@ -69,7 +47,22 @@ export function Header({
             </Link>
           </div>
         ) : (
-          <div></div>
+          <>
+            <button
+              className="header__register"
+              type="button"
+              onClick={onRegisterClick}
+            >
+              Sign Up
+            </button>
+            <button
+              className="header__login"
+              type="button"
+              onClick={onLoginClick}
+            >
+              Log in
+            </button>
+          </>
         )}
       </div>
     </header>
