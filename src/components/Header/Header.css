@@ -128,8 +128,10 @@
 
 @media screen and (max-width: 880px) {
   .header {
-    margin-top: 56px;
     font-size: 16px;
+    top: 25px;
+    position: relative;
+    left: 231px;
   }
   .header__container {
     margin-bottom: 32px;
@@ -179,12 +181,11 @@
 
   .header__add-clothes {
     display: flex;
-    flex-direction: row;
-    top: 5px;
+    top: 22px;
     position: relative;
     height: 13px;
-    width: 84px;
-    left: -29px;
+    width: 110px;
+    left: -39px;
     font-size: 16px;
   }
 
@@ -195,15 +196,16 @@
     width: 173px;
     height: 33px;
     box-sizing: border-box;
-    top: 56px;
-    left: -32px;
+    top: 76px;
+    left: -60px;
     font-size: 16px;
+
   }
 
   .header__avatar {
     display: flex;
-    top: 36px;
-    left: -19px;
+    top: 43px;
+    left: -93px;
   }
 }
 

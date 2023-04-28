@@ -1,10 +1,9 @@
 .sidebar {
-  display: flex;
-  flex-direction: column;
+  margin: 10px;
 }
 
 .sidebar__container {
-  display: flex;
+  display: block;
   width: 229px;
   height: 56px;
   margin-top: 47px;
@@ -30,8 +29,8 @@
   font-size: 20px;
   line-height: 25px;
   position: relative;
-  top: 20px;
-  margin-left: 20px;
+  top: -54px;
+  margin-left: 67px;
 }
 
 .sidebar__edit-profile {
