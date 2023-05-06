@@ -4,12 +4,11 @@ import { useHistory } from "react-router-dom";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 
 export const RegisterModal = ({
-  form,
   isOpen,
   isLoading,
   onCloseModal,
   onRegistration,
-  onToggleModal,
+  handleToggleModal,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,9 +51,9 @@ export const RegisterModal = ({
 
   return (
     <ModalWithForm
-      name={form}
+      type="register"
       title="Sign up"
-      buttonText={isLoading ? "Saving..." : "Next"}
+      buttonText={isLoading ? "Registered..." : "Next"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
       closeModal={onCloseModal}
@@ -113,7 +112,7 @@ export const RegisterModal = ({
         required
       />
       <span className="modal__input-error avatar-url-error"></span>
-      <p className="modal__auth-text" onClick={onToggleModal}>
+      <p className="modal__auth-text" onClick={handleToggleModal}>
         or Login
       </p>
     </ModalWithForm>

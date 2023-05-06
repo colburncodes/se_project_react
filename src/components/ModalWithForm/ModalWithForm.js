@@ -2,15 +2,16 @@ import React from "react";
 import "./ModalWithForm.css";
 
 export function ModalWithForm({
+  isOpen,
   title,
-  name,
+  type,
   buttonText,
   children,
   closeModal,
   onSubmit,
 }) {
   return (
-    <div className="modal">
+    <div className={isOpen ? `modal` : `modal__form-${type} modal__close`}>
       <div className="modal__container">
         <button
           className="modal__close"
@@ -18,7 +19,7 @@ export function ModalWithForm({
           onClick={closeModal}
         ></button>
         <h1 className="modal__title">{title}</h1>
-        <form onSubmit={onSubmit} className={`modal__form modal__form-${name}`}>
+        <form onSubmit={onSubmit} className={`modal__form modal__form-${type}`}>
           <fieldset className="modal__form-fieldset">
             {children}
             {buttonText === "Next" ? (

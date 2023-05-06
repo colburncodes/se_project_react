@@ -26,11 +26,10 @@ function App() {
   const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingitems, setClothingItems] = useState([]);
-  const [activeModal, setActiveModal] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState("");
+  const [showFormError, setShowFormError] = useState(false);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -38,11 +37,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const history = useHistory();
 
-  const handleLoginClick = () => setIsLoginModalOpen(true);
-
   const handleAddClick = () => setIsAddItemModalOpen(true);
-
-  const handleRegisterClick = () => setIsRegisterModalOpen(true);
 
   const handleProfileClick = () => setIsProfileModalOpen(true);
 
@@ -51,10 +46,15 @@ function App() {
     setIsImagePreviewOpen(true);
   };
 
-  const handleToggleModal = () =>
+  const handleFormError = () => {
+    setShowFormError(false);
+  };
+
+  const handleToggleModal = () => {
     activeModal === "login"
       ? setActiveModal("register")
       : setActiveModal("login");
+  };
 
   const handleToggleSwitchChange = () =>
     currentTemperatureUnit === "F"
@@ -62,10 +62,9 @@ function App() {
       : setCurrentTemperatureUnit("F");
 
   const closeModal = () => {
+    setActiveModal("");
     setIsImagePreviewOpen(false);
-    setIsLoginModalOpen(false);
     setIsAddItemModalOpen(false);
-    setIsRegisterModalOpen(false);
     setIsProfileModalOpen(false);
   };
 
@@ -74,7 +73,7 @@ function App() {
     try {
       const res = await auth.register(name, avatar, email, password);
       setIsLoggedIn(true);
-      handleUserLogin(email, password);
+      handleLogin(email, password);
       setCurrentUser(res);
       closeModal();
     } catch (err) {
@@ -84,8 +83,9 @@ function App() {
     }
   }
 
-  async function handleUserLogin(email, password) {
+  async function handleLogin(email, password) {
     setIsLoading(true);
+    setShowFormError(false);
     try {
       const res = await auth.login(email, password);
       if (res) {
@@ -94,6 +94,7 @@ function App() {
         closeModal();
       }
     } catch (err) {
+      setShowFormError(true);
       return console.error(err);
     } finally {
       return setIsLoading(false);
@@ -211,8 +212,8 @@ function App() {
             isLoggedIn={isLoggedIn}
             weatherData={weatherData}
             onAddClick={handleAddClick}
-            onLoginClick={handleLoginClick}
-            onRegisterClick={handleRegisterClick}
+            onLoginClick={() => setActiveModal("login")}
+            onRegisterClick={() => setActiveModal("register")}
           />
           <Switch>
             <Route exact path="/">
@@ -242,26 +243,27 @@ function App() {
             </ProtectedRoute>
           </Switch>
           <Footer />
-
-          {isRegisterModalOpen && (
+          {activeModal === "register" && (
             <RegisterModal
-              type="register"
-              isOpen={isRegisterModalOpen}
+              type={"register"}
+              isOpen={activeModal === "register"}
               isLoading={isLoading}
               onCloseModal={closeModal}
               onRegistration={handleRegistration}
-              onToggleModal={handleToggleModal}
+              handleToggleModal={handleToggleModal}
             />
           )}
 
-          {isLoginModalOpen && (
+          {activeModal === "login" && (
             <LoginModal
-              name="login"
-              isOpen={isLoginModalOpen}
+              type={"login"}
+              isOpen={activeModal === "login"}
               isLoading={isLoading}
               onCloseModal={closeModal}
-              onLogin={handleUserLogin}
-              onToggleModal={handleToggleModal}
+              onLogin={handleLogin}
+              showFormError={showFormError}
+              setShowFormError={handleFormError}
+              handleToggleModal={handleToggleModal}
             />
           )}
 

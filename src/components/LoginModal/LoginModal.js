@@ -1,31 +1,25 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./LoginModal.css";
 
 export const LoginModal = ({
-  name,
   isOpen,
   isLoading,
   onCloseModal,
   onLogin,
-  onToggleModal,
+  showFormError,
+  setShowFormError,
+  handleToggleModal,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const history = useHistory();
 
   const isValid = useMemo(() => {
     return password.length >= 8 && email.length >= 8;
   }, [email, password]);
-
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -36,12 +30,13 @@ export const LoginModal = ({
   useEffect(() => {
     setEmail("");
     setPassword("");
-  }, [isOpen]);
+    setShowFormError(false);
+  }, [isOpen, setShowFormError]);
 
   return (
     <ModalWithForm
+      type="login"
       title={"Log in"}
-      name={name}
       buttonText={isLoading ? "Logging in..." : "Login"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
@@ -58,10 +53,10 @@ export const LoginModal = ({
         placeholder="Email"
         minLength="1"
         maxLength="30"
-        onChange={handleEmail}
+        onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <span className="modal__input-error email-error"></span>
+      <span className={"modal__input-error email-error"}></span>
       <label className="modal__label-password">Password</label>
       <input
         id="password"
@@ -70,11 +65,11 @@ export const LoginModal = ({
         name="password"
         value={password}
         placeholder="Password"
-        onChange={handlePassword}
+        onChange={(e) => setPassword(e.target.value)}
         required
       />
       <span className="modal__input-error password-error"></span>
-      <p className="modal__auth-text-login" onClick={onToggleModal}>
+      <p className="modal__auth-text-login" onClick={handleToggleModal}>
         or Register
       </p>
     </ModalWithForm>
