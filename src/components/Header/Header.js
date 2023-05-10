@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import logoPath from "../../images/wtwr.svg";
+
 import { currentDate } from "../../utils/constants";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
@@ -11,9 +11,7 @@ import { styled, Stack } from "@mui/material";
 import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 
 const Menu = styled(Box)({
   borderBottom: "1px solid black",
@@ -21,6 +19,7 @@ const Menu = styled(Box)({
   justifyContent: "center",
   alignItems: "center",
   paddingTop: 2,
+  marginTop: 5,
 });
 
 const MenuItem = styled(Button)({
