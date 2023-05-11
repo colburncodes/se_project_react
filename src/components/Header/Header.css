@@ -130,7 +130,7 @@
 
 @media screen and (max-width: 880px) {
   .header {
-    font-size: 16px;
+    font-size: 20px;
     top: 25px;
     position: relative;
     left: 231px;
@@ -142,6 +142,14 @@
     width: 500px;
     height: 33px;
     font-size: 16px;
+  }
+
+  .header__info-user {
+    display: flex;
+    align-items: flex-end;
+    margin-right: -71px;
+    top: -58px;
+    position: relative;
   }
 
   .header__logo {
@@ -186,9 +194,10 @@
     top: 22px;
     position: relative;
     height: 13px;
-    width: 110px;
-    left: -39px;
-    font-size: 16px;
+    width: 117px;
+    left: -51px;
+    font-size: 18px;
+
   }
 
   .header__username {
@@ -199,8 +208,8 @@
     height: 33px;
     box-sizing: border-box;
     top: 76px;
-    left: -60px;
-    font-size: 16px;
+    left: -72px;
+    font-size: 18px;
 
   }
 
