@@ -92,9 +92,13 @@ export function Header({
               </Stack>
             ) : (
               <>
+                <Stack
+                  direction={"row"}
+                  sx={{ top: "-20px", position: "relative" }}
+                >
+                  <ToggleSwitch />
+                </Stack>
                 <Stack direction={"row"} m={1}>
-                  {/* <ToggleSwitch /> */}
-
                   <Button
                     onClick={onLoginClick}
                     color="inherit"

@@ -6,6 +6,7 @@
   border-radius: 12px;
   overflow: hidden;
   margin-top: 40px;
+  margin-left: -13px;
 }
 
 .weather__temperature {
@@ -48,8 +49,9 @@
     margin-bottom: 32px;
     padding-left: 19px;
     padding-right: 19px;
-    width: 800px;
+    width: 700px;
     height: 83px;
+    margin-left: 11px;
   }
 
   .weather__sunny {
@@ -57,7 +59,7 @@
     margin-bottom: 32px;
     padding-left: 19px;
     padding-right: 19px;
-    width: 800px;
+    width: 700px;
     height: 83px;
     top: -40px;
     left: 316px;
@@ -87,6 +89,7 @@
     padding-right: 19px;
     width: 427px;
     height: 74px;
+    margin-left: 31px;
   }
 
   .weather__temperature {
