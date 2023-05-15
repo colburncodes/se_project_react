@@ -7,7 +7,7 @@ import { location, API_KEY } from "../utils/constants";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { CurrentTemperatureUnitContext } from "../context/CurrentTemperatureUnitContext";
 
-import Container from "@mui/material/Container";
+import { toast, Toaster } from "react-hot-toast";
 
 import {
   Header,
@@ -91,11 +91,13 @@ function App() {
     try {
       const res = await auth.login(email, password);
       if (res) {
+        toast.success("Successful Login!");
         setIsLoggedIn(true);
         setCurrentUser(res.token);
         closeModal();
       }
     } catch (err) {
+      toast.error("Invalid email or password!");
       setShowFormError(true);
       return console.error(err);
     } finally {
@@ -116,6 +118,7 @@ function App() {
     api
       .addItem({ name, imageUrl, weather })
       .then((item) => {
+        toast.success("Item Added Successfully!");
         setClothingItems([item, ...clothingitems]);
         closeModal();
       })
@@ -128,6 +131,7 @@ function App() {
     auth
       .updateUser(name, avatar, token)
       .then((res) => {
+        toast.success("Profile Updated!");
         setCurrentUser(res);
         closeModal();
       })
@@ -164,6 +168,7 @@ function App() {
         setClothingItems([
           ...clothingitems.filter((item) => item._id !== selectedCard._id),
         ]);
+        toast.success("Item deleted successfully!");
         setSelectedCard({});
         closeModal();
       })
@@ -210,6 +215,23 @@ function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              success: {
+                style: {
+                  background: "green",
+                  color: "white",
+                },
+              },
+              error: {
+                style: {
+                  background: "red",
+                  color: "white",
+                },
+              },
+            }}
+          />
           <Header
             isLoggedIn={isLoggedIn}
             weatherData={weatherData}
