@@ -1,20 +1,13 @@
 .header {
-  display: flex;
-  height: 40px;
   width: 1360px;
-  margin-top: 32px;
-  justify-content: space-between;
 }
 
 .header__container {
-  display: flex;
   margin: 0;
-  top: 8px;
   margin-left: 155px;
 }
 
 .header__info {
-  display: flex;
   align-items: flex-end;
   margin-right: 318px;
 }
@@ -126,141 +119,4 @@
   margin-left: 12px;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-@media screen and (max-width: 880px) {
-  .header {
-    font-size: 20px;
-    top: 25px;
-    position: relative;
-    left: 231px;
-  }
-  .header__container {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 500px;
-    height: 33px;
-    font-size: 16px;
-  }
-
-  .header__info-user {
-    display: flex;
-    align-items: flex-end;
-    margin-right: -71px;
-    top: -58px;
-    position: relative;
-  }
-
-  .header__logo {
-    margin-bottom: 32px;
-    width: 66px;
-    height: 18px;
-    top: 43px;
-    left: -144px;
-    box-sizing: border-box;
-  }
-
-  .header__info {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 173px;
-    height: 33px;
-    box-sizing: border-box;
-    left: -490px;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    font-size: 16px;
-  }
-
-  .header__date-location {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 241px;
-    height: 24px;
-    box-sizing: border-box;
-    left: -164px;
-    top: 43px;
-    font-size: 15px;
-  }
-
-
-
-  .header__add-clothes {
-    display: flex;
-    top: 22px;
-    position: relative;
-    height: 13px;
-    width: 117px;
-    left: -51px;
-    font-size: 18px;
-
-  }
-
-  .header__username {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 173px;
-    height: 33px;
-    box-sizing: border-box;
-    top: 76px;
-    left: -72px;
-    font-size: 18px;
-
-  }
-
-  .header__avatar {
-    display: flex;
-    top: 43px;
-    left: -93px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .header {
-    margin-top: 28px;
-  }
-
-  .header__logo {
-    height: 17px;
-    left: -157px;
-    top: 48px;
-  }
-
-  .header__date-location {
-    height: 12px;
-    width: 223px;
-    left: -192px;
-    top: 6px;
-  }
-
-  .header__container {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 200px;
-    height: 24px;
-  }
-  .header__info {
-    width: 231px;
-    height: 31px;
-    box-sizing: border-box;
-    left: -785px;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-  }
-
-  .header__username {
-    margin-bottom: 32px;
-    padding-left: 19px;
-    padding-right: 19px;
-    width: 173px;
-    height: 33px;
-    box-sizing: border-box;
-  }
 }

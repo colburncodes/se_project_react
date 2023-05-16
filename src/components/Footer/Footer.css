@@ -1,16 +1,12 @@
 .footer {
-  display: flex;
   margin-top: 600px;
-  margin-bottom: 40px;
-  height: 20px;
-  width: 1360px;
+  max-width: 1360px;
 }
 
 .footer__container {
   display: flex;
   margin: 0;
   margin-left: 40px;
-  width: 1100px;
   justify-content: space-between;
 }
 
@@ -29,18 +25,4 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-}
-
-@media only screen and (max-width: 880px) {
-  .footer {
-    display: grid;
-    position: relative;
-    top: 300px;
-    left: -28px;
-  }
-
-  .footer__container {
-    display: flex;
-    width: 790px;
-  }
 }
