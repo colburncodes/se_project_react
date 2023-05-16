@@ -1,22 +1,11 @@
 .App {
-  display: flex;
-  position: relative;
+  padding: 32px 40px 24px 40px;
+
+  background-color: #f3f3f3;
   min-height: 100vh;
-  margin: 0 auto;
-  background: cover #f3f3f3;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.App__content {
+.App_content {
+  max-width: 1440px;
   margin: 0 auto;
-}
-
-@media screen and (max-width: 880px) {
-  .App {
-    margin: 0 auto;
-    padding: 0;
-    left: 75px;
-  }
 }

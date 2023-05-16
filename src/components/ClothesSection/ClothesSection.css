@@ -1,10 +1,5 @@
-.clothes__section {
-  /* margin-right: 62px;
-  margin-top: 2px; */
-}
 
 .clothes__section-container {
-  display: block;
   margin-top: 106px;
   padding: 10px;
 }
@@ -44,8 +39,6 @@
 }
 
 .clothes__section-items {
-  display: flex;
-  flex-wrap: wrap;
   top: -78px;
   position: relative;
 }
