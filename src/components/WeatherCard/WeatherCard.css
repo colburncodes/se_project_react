@@ -6,6 +6,8 @@
   border-radius: 12px;
   overflow: hidden;
   margin-top: 40px;
+  position: relative;
+  right: 110px;
 }
 
 .weather__temperature {
