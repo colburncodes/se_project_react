@@ -71,32 +71,35 @@ export function Header({
             </Stack>
 
             {isLoggedIn ? (
-              <Stack direction={"row"} m={1}>
-                <div className="header__info-user">
-                  <button
-                    className="header__add-clothes"
-                    type="button"
-                    onClick={onAddClick}
-                  >
-                    + Add clothes
-                  </button>
-                  <p className="header__username">{currentUser.name}</p>
-                  <Link to={"/profile"}>
-                    <img
-                      className="header__avatar"
-                      alt="Avatar"
-                      src={currentUser.avatar}
-                    />
-                  </Link>
-                </div>
-              </Stack>
+              <>
+                <Stack direction={"row"} m={1}>
+                  <ToggleSwitch />
+                  <div className="header__info-user">
+                    <button
+                      className="header__add-clothes"
+                      type="button"
+                      onClick={onAddClick}
+                    >
+                      + Add clothes
+                    </button>
+                    <p className="header__username">{currentUser.name}</p>
+                    <Link to={"/profile"}>
+                      <img
+                        className="header__avatar"
+                        alt="Avatar"
+                        src={currentUser.avatar}
+                      />
+                    </Link>
+                  </div>
+                </Stack>
+              </>
             ) : (
               <>
                 <Stack
                   direction={"row"}
                   sx={{ top: "-20px", position: "relative" }}
                 >
-                  <ToggleSwitch />
+                  {/* <ToggleSwitch /> */}
                 </Stack>
                 <Stack direction={"row"} m={1}>
                   <Button
